@@ -22,17 +22,31 @@
     <!-- Animation Css -->
     <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
 
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="../plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
     <!-- Morris Chart Css-->
     <link href="../plugins/morrisjs/morris.css" rel="stylesheet" />
+
+    <!-- Wait Me Css -->
+    <link href="../plugins/waitme/waitMe.css" rel="stylesheet" />
+
+    <!-- Bootstrap Select Css -->
+    <link href="../plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
     <!-- Custom Css -->
     <link href="../css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
+    <script src="../js/angular/angular.min.js"></script>
+    <script src="../js/angular/angular-animate.min.js"></script>
+    <script src="../js/angular/angular-route.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/Controller.js"></script>
 </head>
 
-<body class="theme-red">
+<body class="theme-red" ng-app="app">
     <?
         session_start();
         include("../system/connection.php");
@@ -924,9 +938,25 @@
         <!-- Custom Js -->
         <script src="../js/admin.js"></script>
         <script src="../js/pages/index.js"></script>
+        <script src="../js/pages/forms/basic-form-elements.js"></script>
+        <script src="../../plugins/jquery/jquery.min.js"></script>
+
+
+        <!-- Select Plugin Js -->
+        <script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+        <!-- Autosize Plugin Js -->
+        <script src="../../plugins/autosize/autosize.js"></script>
+
+        <!-- Moment Plugin Js -->
+        <script src="../../plugins/momentjs/moment.js"></script>
+
+        <!-- Bootstrap Material Datetime Picker Plugin Js -->
+        <script src="../plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 
         <!-- Demo Js -->
         <script src="../js/demo.js"></script>
+
 </body>
 
 </html>

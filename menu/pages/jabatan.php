@@ -24,6 +24,7 @@
                         <tr>
                             <th>No</th>
                             <th>Jabatan</th>
+                            <th><i class="material-icons pull-center">settings</i></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +36,34 @@
                             <tr>
                                 <th scope="row"><?php echo $nojabatan?></th>
                                 <td><?php echo $dtjabatan['Jabatan']?></td>
+                                <td>
+                                <button data-toggle="modal" data-target="#<?php echo $dtjabatan[0]?>"><i class="material-icons">create</i></button>
+                                <div class="modal fade" id="<?php echo $dtjabatan[0]?>" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <form name="FormPangkat" action="" method="POST" id="form_advanced_validation">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="defaultModalLabel">Tambah Jabatan</h4>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line">
+                                                            <input type="hidden" class="form-control" name="Id" value="<?php echo $dtjabatan[0]?>"/>
+                                                            <input type="text" class="form-control" name="Jabatan" value="<?php echo $dtjabatan[1]?>" required/>
+                                                            <label class="form-label">Jabatan</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <input type="submit" class="btn btn-link waves-effect" value="Update" name="Update">
+                                                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                </td>
                             </tr>
                             <?php
                             $nojabatan++;
@@ -85,6 +114,21 @@ if(isset($_POST['add']))
         echo "<script>document.location='?p=jabatan'</script>";
     }else{
         echo "<script>alert('Data $jabatan Gagal di simpan')</script>";
+    }
+}
+
+if(isset($_POST['Update']))
+{
+    $Id         = $_POST['Id'];
+    $jabatan    = $_POST['Jabatan'];
+    
+    $q = mysql_query("UPDATE jabatan SET Jabatan ='$jabatan' WHERE Id= '$Id'")or die(mysql_error());
+    if($q)
+    {
+        echo "<script>alert('Data berhasil di Rubah')</script>";
+        echo "<script>document.location='?p=jabatan'</script>";
+    }else{
+        echo "<script>alert('Data Gagal di Rubah')</script>";
     }
 }
 ?>

@@ -1,4 +1,4 @@
-<div class="row clearfix">
+<div class="row clearfix" ng-controller="PegawaiController" ng-init="Init()">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="header">
@@ -40,157 +40,233 @@
                             while($dtpegawai=mysql_fetch_array($q))
                             {?>
                             <tr>
-                                <th scope="row"><?php echo $nopegawai?></th>
-                                <td><?php echo $dtpegawai['Nip']?></td>
-                                <td><?php echo $dtpegawai['Nama']?></td>
-                                <td><?php echo $dtpegawai['Sex']?></td>
-                                <td><?php echo $dtpegawai['Tempat_Lahir']?></td>
-                                <td><?php echo $dtpegawai['Tgl_Lahir']?></td>
-                                <td><?php echo $dtpegawai['Agama']?></td>
-                                <td><?php echo $dtpegawai['Status']?></td>
+                                <th scope="row">
+                                    <?php echo $nopegawai?>
+                                </th>
                                 <td>
-                                <button data-toggle="modal" data-target="#Editpegawai<?php echo $nopegawai?>"><i class="material-icons">create</i></button>
-                                <button data-toggle="modal" data-target="#Detailpegawai<?php echo $nopegawai?>"><i class="material-icons">view_agenda</i></button>
-                                
-                                <!--
+                                    <?php echo $dtpegawai['Nip']?>
+                                </td>
+                                <td>
+                                    <?php echo $dtpegawai['Nama']?>
+                                </td>
+                                <td>
+                                    <?php echo $dtpegawai['Sex']?>
+                                </td>
+                                <td>
+                                    <?php echo $dtpegawai['Tempat_Lahir']?>
+                                </td>
+                                <td>
+                                    <?php echo $dtpegawai['Tgl_Lahir']?>
+                                </td>
+                                <td>
+                                    <?php echo $dtpegawai['Agama']?>
+                                </td>
+                                <td>
+                                    <?php echo $dtpegawai['Status']?>
+                                </td>
+                                <td>
+                                    <button data-toggle="modal" data-target="#Editpegawai<?php echo $nopegawai?>"><i class="material-icons">create</i></button>
+                                    <button data-toggle="modal" data-target="#Detailpegawai<?php echo $nopegawai?>"><i class="material-icons">view_agenda</i></button>
+
+                                    <!--
                                     Edit Pegawai
                                 -->
-                                <div class="modal fade" id="Editpegawai<?php echo $nopegawai?>" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            
-                                            <form name="FormPangkat" action="" method="POST" id="form_advanced_validation">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title" id="defaultModalLabel">Edit Jabatan</h4>
-                                                </div>
-                                                <div class="modal-body">
+                                    <div class="modal fade" id="Editpegawai<?php echo $nopegawai?>" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
 
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="Nip" value="<?php echo $dtpegawai['Nip']?>" required/>
-                                                            <label class="form-label">Nip</label>
+                                                <form name="FormPangkat" action="" method="POST" id="form_advanced_validation">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="defaultModalLabel">Edit Pegawai</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="hidden" class="form-control" name="Nip" value="<?php echo $dtpegawai['Nip']?>"/>
+                                                                <input type="text" class="form-control" value="<?php echo $dtpegawai['Nip']?>" disabled/>
+                                                                <label class="form-label">Nip</label>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="Nama" value="<?php echo $dtpegawai['Nama']?>" required/>
-                                                            <label class="form-label">Nama</label>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="Nama" value="<?php echo $dtpegawai['Nama']?>" required/>
+                                                                <label class="form-label">Nama</label>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input name="Sex" type="radio" class="with-gap" value="L" id="L"/>
-                                                            <label for="L">L</label>
-                                                            <input name="Sex" type="radio" class="with-gap" value="P" id="P"/>
-                                                            <label for="P">P</label>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <?php
+                                                                    if($dtpegawai['Sex']=="L")
+                                                                    {
+                                                                        echo "
+                                                                        <input name='Sex' type='radio' class='with-gap' value='L' id='L' checked/>
+                                                                        <label for='L'>L</label>
+                                                                        <input name='Sex' type='radio' class='with-gap' value='P' id='P' />
+                                                                        <label for='P'>P</label>
+                                                                        ";
+                                                                    }else
+                                                                    {
+                                                                        echo "
+                                                                        <input name='Sex' type='radio' class='with-gap' value='L' id='L'/>
+                                                                        <label for='L'>L</label>
+                                                                        <input name='Sex' type='radio' class='with-gap' value='P' id='P' checked />
+                                                                        <label for='P'>P</label>
+                                                                        ";
+                                                                    }
+                                                                ?>
+                                                                
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="Tempat_Lahir" required/>
-                                                            <label class="form-label">Tempat_Lahir</label>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="Tempat_Lahir" value="<?php echo $dtpegawai['Tempat_Lahir']?>" required/>
+                                                                <label class="form-label">Tempat_Lahir</label>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            
-                                                            <input type="date" class="form-control" name="Tgl_Lahir" required/>
-                                                            <label class="form-label">Tgl_Lahir</label>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="Tgl_Lahir" value="<?php echo $dtpegawai['Tgl_Lahir']?>" required/>
+                                                                <label class="form-label">Tgl_Lahir</label>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                        <select class="form-control show-tick" name="Agama">
-                                                            <option value="$dtpegawai['Agama']"><?php echo $dtpegawai['Agama']?></option>
-                                                            <option value="Islam">Islam</option>
-                                                            <option value="Protestan">Protestan</option>
-                                                            <option value="Katolik">Katolik</option>
-                                                            <option value="Hindu">Hindu</option>
-                                                            <option value="Budha">Budha</option>
-                                                            <option value="Konghucu">Konghucu</option>
-                                                        </select>
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <select class="form-control show-tick" name="Agama">
+                                                                    <option value="<?php echo $dtpegawai[5]?>"><?php echo $dtpegawai['Agama']?></option>
+                                                                    <option value="Islam">Islam</option>
+                                                                    <option value="Protestan">Protestan</option>
+                                                                    <option value="Katolik">Katolik</option>
+                                                                    <option value="Hindu">Hindu</option>
+                                                                    <option value="Budha">Budha</option>
+                                                                    <option value="Konghucu">Konghucu</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input name="Martial" type="radio" class="with-gap" value="Kawin" id="Kawin"/>
-                                                            <label for="Kawin">Kawin</label>
-                                                            <input name="Martial" type="radio" class="with-gap" value="Belum Kawin" id="Belum_Kawin"/>
-                                                            <label for="Belum_Kawin">Belum Kawin</label>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <?php
+                                                                    if($dtpegawai['Status_Perkawinan']=="Kawin")
+                                                                    {
+                                                                        echo "
+                                                                        <input name='Martial' type='radio' class='with-gap' value='Kawin' id='Kawin' checked/>
+                                                                        <label for='Kawin'>Kawin</label>
+                                                                        <input name='Martial' type='radio' class='with-gap' value='Belum Kawin' id='Belum_Kawin' />
+                                                                        <label for='Belum_Kawin'>Belum Kawin</label>
+                                                                        ";
+                                                                    }else
+                                                                    {
+                                                                        echo "
+                                                                        <input name='Martial' type='radio' class='with-gap' value='Kawin' id='Kawin'/>
+                                                                        <label for='Kawin'>Kawin</label>
+                                                                        <input name='Martial' type='radio' class='with-gap' value='Belum Kawin' id='Belum_Kawin' checked/>
+                                                                        <label for='Belum_Kawin'>Belum Kawin</label>
+                                                                        ";
+                                                                    }
+                                                                ?>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="date" class="form-control" name="Tgl_Masuk" required/>
-                                                            <label class="form-label">Tgl_Masuk</label>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="Tgl_Masuk" value="<? echo $dtpegawai['Tgl_Masuk']?>" required/>
+                                                                <label class="form-label">Tgl_Masuk</label>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input name="JenisPegawai" type="radio" class="with-gap" value="PNS" id="PNS"/>
-                                                            <label for="PNS">PNS</label>
-                                                            <input name="JensPegawai" type="radio" class="with-gap" value="Kontrak" id="Kontrak"/>
-                                                            <label for="Kontrak">Kontrak</label>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <?php
+                                                                    if($dtpegawai['Jenis_Pegawai']=="PNS")
+                                                                    {
+                                                                        echo "
+                                                                        <input name='JenisPegawai' type='radio' class='with-gap' value='PNS' id='PNS' checked/>
+                                                                        <label for='PNS'>PNS</label>
+                                                                        <input name='JenisPegawai' type='radio' class='with-gap' value='Kontrak' id='Kontrak' />
+                                                                        <label for='Kontrak'>Kontrak</label>
+                                                                        ";
+                                                                    }else
+                                                                    {
+                                                                        echo "
+                                                                        <input name='JenisPegawai' type='radio' class='with-gap' value='PNS' id='PNS'/>
+                                                                        <label for='PNS'>PNS</label>
+                                                                        <input name='JenisPegawai' type='radio' class='with-gap' value='Kontrak' id='Kontrak' checked/>
+                                                                        <label for='Kontrak'>Kontrak</label>
+                                                                        ";
+                                                                    }
+                                                                ?>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input name="Status" type="radio" class="with-gap" value="True" id="True"/>
-                                                            <label for="True">Aktif</label>
-                                                            <input name="Status" type="radio" class="with-gap" value="False" id="False"/>
-                                                            <label for="False">Tidak Aktif</label>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <?php
+                                                                    if($dtpegawai['Status']=="True")
+                                                                    {
+                                                                        echo "
+                                                                        <input name='Status' type='radio' class='with-gap' value='True' id='True' checked/>
+                                                                        <label for='True'>Aktif</label>
+                                                                        <input name='Status' type='radio' class='with-gap' value='False' id='False' />
+                                                                        <label for='False'>Tidak Aktif</label>
+                                                                        ";
+                                                                    }else
+                                                                    {
+                                                                        echo "
+                                                                        <input name='Status' type='radio' class='with-gap' value='True' id='True' />
+                                                                        <label for='True'>Aktif</label>
+                                                                        <input name='Status' type='radio' class='with-gap' value='False' id='False' checked/>
+                                                                        <label for='False'>Tidak Aktif</label>
+                                                                        ";
+                                                                    }
+                                                                ?>
+
+                                                            </div>
                                                         </div>
+                                                        
                                                     </div>
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="Photo" required/>
-                                                            <label class="form-label">Photo</label>
-                                                        </div>
+                                                    <div class="modal-footer">
+                                                        <input type="submit" class="btn btn-link waves-effect" value="Update" name="Update">
+                                                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
                                                     </div>
-                                                    </div>
-                                                <div class="modal-footer">
-                                                    <input type="submit" class="btn btn-link waves-effect" value="Simpan" name="Update">
-                                                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                                                </div>
-                                            </form>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                
-                                <!--
+                                    <!--
                                     Detail Pegawai
                                 -->
-                                <div class="modal fade" id="Detailpegawai<?php echo $nopegawai?>" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            
-                                            <form name="FormPangkat" action="" method="POST" id="form_advanced_validation">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title" id="defaultModalLabel">Detail Pegawai</h4>
-                                                </div>
-                                                <div class="modal-body">
+                                    <div class="modal fade" id="Detailpegawai<?php echo $nopegawai?>" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
 
-                                                    
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <input type="submit" class="btn btn-link waves-effect" value="Simpan" name="Update">
-                                                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                                                </div>
-                                            </form>
+                                                <form name="FormPangkat" action="" method="POST" id="form_advanced_validation">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="defaultModalLabel">Detail Pegawai</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="col-md-12">
+                                                            
+                                                            
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <input type="submit" class="btn btn-link waves-effect" value="Update" name="Update">
+                                                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
 
-                            
+
                                 </td>
                             </tr>
                             <?php
                             $nopegawai++;
                             }
                         ?>
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -207,7 +283,7 @@
                 </div>
                 <div class="modal-body">
 
-                <div class="form-group form-float">
+                    <div class="form-group form-float">
                         <div class="form-line">
                             <input type="text" class="form-control" name="Nip" required/>
                             <label class="form-label">Nip</label>
@@ -221,9 +297,9 @@
                     </div>
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input name="Sex" type="radio" class="with-gap" value="L" id="L"/>
+                            <input name="Sex" type="radio" class="with-gap" value="L" id="L" />
                             <label for="L">L</label>
-                            <input name="Sex" type="radio" class="with-gap" value="P" id="P"/>
+                            <input name="Sex" type="radio" class="with-gap" value="P" id="P" />
                             <label for="P">P</label>
                         </div>
                     </div>
@@ -241,22 +317,22 @@
                     </div>
                     <div class="form-group">
                         <div class="form-line">
-                        <select class="form-control show-tick" name="Agama">
-                            <option value="">-- Pilih Agama --</option>
-                            <option value="Islam">Islam</option>
-                            <option value="Protestan">Protestan</option>
-                            <option value="Katolik">Katolik</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Budha">Budha</option>
-                            <option value="Konghucu">Konghucu</option>
-                        </select>
+                            <select class="form-control show-tick" name="Agama">
+                                <option value="">-- Pilih Agama --</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Protestan">Protestan</option>
+                                <option value="Katolik">Katolik</option>
+                                <option value="Hindu">Hindu</option>
+                                <option value="Budha">Budha</option>
+                                <option value="Konghucu">Konghucu</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input name="Martial" type="radio" class="with-gap" value="Kawin" id="Kawin"/>
+                            <input name="Martial" type="radio" class="with-gap" value="Kawin" id="Kawin" />
                             <label for="Kawin">Kawin</label>
-                            <input name="Martial" type="radio" class="with-gap" value="Belum Kawin" id="Belum_Kawin"/>
+                            <input name="Martial" type="radio" class="with-gap" value="Belum Kawin" id="Belum_Kawin" />
                             <label for="Belum_Kawin">Belum Kawin</label>
                         </div>
                     </div>
@@ -268,26 +344,20 @@
                     </div>
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input name="JenisPegawai" type="radio" class="with-gap" value="PNS" id="PNS"/>
+                            <input name="JenisPegawai" type="radio" class="with-gap" value="PNS" id="PNS" />
                             <label for="PNS">PNS</label>
-                            <input name="JensPegawai" type="radio" class="with-gap" value="Kontrak" id="Kontrak"/>
+                            <input name="JenisPegawai" type="radio" class="with-gap" value="Kontrak" id="Kontrak" />
                             <label for="Kontrak">Kontrak</label>
                         </div>
                     </div>
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input name="Status" type="radio" class="with-gap" value="True" id="True"/>
+                            <input name="Status" type="radio" class="with-gap" value="True" id="True" />
                             <label for="True">Aktif</label>
-                            <input name="Status" type="radio" class="with-gap" value="False" id="False"/>
+                            <input name="Status" type="radio" class="with-gap" value="False" id="False" />
                             <label for="False">Tidak Aktif</label>
                         </div>
                     </div>
-                    <div class="form-group form-float">
-                        <div class="form-line">
-                            <input type="text" class="form-control" name="Photo" required/>
-                            <label class="form-label">Photo</label>
-                        </div>
-                    </div
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-link waves-effect" value="Simpan" name="add">
@@ -307,7 +377,7 @@ if(isset($_POST['add']))
     $Nama = $_POST['Nama'];
     $Sex = $_POST['Sex'];
     $Tempat_lahir = $_POST['Tempat_Lahir'];
-    $Tgl_lahir = $_POST['Tgl_lahir'];
+    $Tgl_lahir = $_POST['Tgl_Lahir'];
     $Agama = $_POST['Agama'];
     $Martial = $_POST['Martial'];
     $Tgl_Masuk = $_POST['Tgl_Masuk'];
@@ -317,13 +387,41 @@ if(isset($_POST['add']))
 
     //echo "<script>alert('$Nip, $Nama, $Sex, $Tempat_lahir, $Tgl_lahir, $Agama, $Martial, $Tgl_Masuk,  $JenisPegawai, $Status, $Photo')</script>";
     
-    $q = mysql_query("insert into pegawai values('$Nip','$Nama','$Sex','$Tempat_lahir','$Tgl_lahir','$Agama','$Martial','$Tgl_Masuk','$JenisPegawai','$Status','$Photo')")or die(mysql_error());
+    $q = mysql_query("insert into pegawai values('$Nip','$Nama','$Sex','$Tempat_lahir','$Tgl_lahir','$Agama','$Martial','$Tgl_Masuk','$JenisPegawai','$Status')")or die(mysql_error());
     if($q)
     {
         echo "<script>alert('Data berhasil di simpan')</script>";
         echo "<script>document.location='?p=pegawai'</script>";
     }else{
         echo "<script>alert('Data Gagal di simpan')</script>";
+    }
+    
+}
+
+
+
+if(isset($_POST['Update']))
+{
+    $Nip = $_POST['Nip'];
+    $Nama = $_POST['Nama'];
+    $Sex = $_POST['Sex'];
+    $Tempat_lahir = $_POST['Tempat_Lahir'];
+    $Tgl_lahir = $_POST['Tgl_Lahir'];
+    $Agama = $_POST['Agama'];
+    $Martial = $_POST['Martial'];
+    $Tgl_Masuk = $_POST['Tgl_Masuk'];
+    $JenisPegawai = $_POST['JenisPegawai'];
+    $Status = $_POST['Status'];
+
+    
+    $a = "UPDATE pegawai SET Nama='$Nama', Sex='$Sex', Tempat_Lahir='$Tempat_lahir', Tgl_Lahir='$Tgl_lahir', Agama='$Agama', Status_Perkawinan='$Martial', Tgl_Masuk='$Tgl_Masuk', Jenis_Pegawai='$JenisPegawai', Status='$Status' WHERE Nip= '$Nip'";
+    $exec=mysql_query($a)or die(mysql_error());
+    if($exec)
+    {
+        echo "<script>alert('Update data berhasil')</script>";
+        echo "<script>document.location='?p=pegawai'</script>";
+    }else{
+        echo "<script>alert('Data Gagal di Ubah')</script>";
     }
     
 }

@@ -49,8 +49,89 @@
                                 <td><?php echo $dtalamat['Kelurahan']?></td>
                                 <td><?php echo $dtalamat['Status']?></td>
                                 <td>
-                                <button data-toggle="modal" data-target="#Editpegawai<?php echo $nopegawai?>"><i class="material-icons">create</i></button>
-                                <button data-toggle="modal" data-target="#Detailpegawai<?php echo $nopegawai?>"><i class="material-icons">view_agenda</i></button>
+                                    <button data-toggle="modal" data-target="#EditAlamat"><i class="material-icons">create</i></button>
+                                    <button data-toggle="modal" data-target="#Detailpegawai<?php echo $nopegawai?>"><i class="material-icons">view_agenda</i></button>
+
+                                    <!--
+                                        Edit Alamat
+                                    -->
+                                    <div class="modal fade" id="EditAlamat" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <form name="FormPangkat" action="" method="POST" id="form_advanced_validation">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="defaultModalLabel">Edit Alamat</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="hidden" class="form-control" name="Id" value="<?php echo $dtalamat[0]?>"/>
+                                                                <input type="text" class="form-control" name="Nip" value="<?php echo $dtalamat[1]?>" required disabled/>
+                                                                <label class="form-label">Nip</label>
+                                                            </div>             
+                                                        </div>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="Alamat" value="<?php echo $dtalamat[2]?>" required/>
+                                                                <label class="form-label">Alamat</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="Provinsi" value="<?php echo $dtalamat[3]?>" required/>
+                                                                <label class="form-label">Provinsi</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="Kabupaten" value="<?php echo $dtalamat[4]?>" required/>
+                                                                <label class="form-label">Kabupaten</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="Kecamatan" value="<?php echo $dtalamat[5]?>" required/>
+                                                                <label class="form-label">Kecamatan</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="Kelurahan" value="<?php echo $dtalamat[6]?>" required/>
+                                                                <label class="form-label">Kelurahan</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <?php
+                                                                    if($dtalamat['Status']=="True")
+                                                                    {
+                                                                        echo "
+                                                                        <input name='Status' type='radio' class='with-gap' value='True' id='True' checked/>
+                                                                        <label for='True'>Aktif</label>
+                                                                        <input name='Status' type='radio' class='with-gap' value='False' id='False' />
+                                                                        <label for='False'>Tidak Aktif</label>
+                                                                        ";
+                                                                    }else
+                                                                    {
+                                                                        echo "
+                                                                        <input name='Status' type='radio' class='with-gap' value='True' id='True' />
+                                                                        <label for='True'>Aktif</label>
+                                                                        <input name='Status' type='radio' class='with-gap' value='False' id='False' checked/>
+                                                                        <label for='False'>Tidak Aktif</label>
+                                                                        ";
+                                                                    }
+                                                                ?>
+                                                            </div>
+                                                        </div>
+                                                    <div class="modal-footer">
+                                                        <input type="submit" class="btn btn-link waves-effect" value="Update" name="Update">
+                                                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             <?php
@@ -76,21 +157,18 @@
 
                     <div class="form-group form-float">
                         <div class="form-line">
-                        <label class="form-label">Nip</label>
-                        <select class="form-control show-tick" name="Nip">
-                            <option value="">-- Pilih Pegawai --</option>
-                            <?php
-                                $q = mysql_query("select * from pegawai")or die(mysql_error());
-                                while($dtpegawai=mysql_fetch_array($q))
-                                {
-                                    echo "<option value='$dtpegawai[0]'>$dtpegawai[1]</option>";
-                                }
-                            
-                            ?>
-                        </select>                           
-                            
-                        </div>
-                        
+                            <select name="Nip">
+                                <option value="">-- Pilih Pegawai --</option>
+                                <?php
+                                    $q = mysql_query("select * from pegawai")or die(mysql_error());
+                                    while($dtpegawai=mysql_fetch_array($q))
+                                    {
+                                        echo "<option value='$dtpegawai[0]'>$dtpegawai[1]</option>";
+                                    }
+                                
+                                ?>
+                            </select>              
+                        </div>             
                     </div>
                     <div class="form-group form-float">
                         <div class="form-line">
@@ -124,8 +202,10 @@
                     </div>
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="Status" required/>
-                            <label class="form-label">Status</label>
+                            <input name="Status" type="radio" class="with-gap" value="True" id="True" />
+                            <label for="True">Aktif</label>
+                            <input name="Status" type="radio" class="with-gap" value="False" id="False" />
+                            <label for="False">Tidak Aktif</label>
                         </div>
                     </div>
                 <div class="modal-footer">
@@ -156,5 +236,30 @@ if(isset($_POST['add']))
     }else{
         echo "<script>alert('Data Gagal di simpan')</script>";
     }
+}
+
+
+if(isset($_POST['Update']))
+{
+    $Id         = $_POST['Id'];
+    $alamat     = $_POST['Alamat'];
+    $provinsi   = $_POST['Provinsi'];
+    $kabupaten  = $_POST['Kabupaten'];
+    $kecamatan  = $_POST['Kecamatan'];
+    $kelurahan  = $_POST['Kelurahan'];
+    $status     = $_POST['Status'];
+
+    //echo "<script>alert('$Id, $alamat, $provinsi, $kabupaten, $kecamatan, $kelurahan, $status')</script>";
+    
+    
+    $q = mysql_query("UPDATE alamat SET Alamat='$alamat', Provinsi='$provinsi', Kabupaten='$kabupaten', kecamatan='$kecamatan', Kelurahan= '$kelurahan', Status= '$status' WHERE Id = '$Id'")or die(mysql_error());
+    if($q)
+    {
+        echo "<script>alert('Data berhasil di Update')</script>";
+        echo "<script>document.location='?p=alamat'</script>";
+    }else{
+        echo "<script>alert('Data Gagal di Diipdate')</script>";
+    }
+    
 }
 ?>
