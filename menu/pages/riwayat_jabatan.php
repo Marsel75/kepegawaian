@@ -121,13 +121,13 @@
                     </div>
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="Tgl_Menjabat" required/>
+                            <input type="date" class="form-control" name="Tgl_Menjabat" required/>
                             <label class="form-label">Tgl_Menjabat</label>
                         </div>
                     </div>
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="Tgl_Terakhir_Menjabat" required/>
+                            <input type="date" class="form-control" name="Tgl_Terakhir_Menjabat" required/>
                             <label class="form-label">Tgl_Terahkir_Menjabat</label>
                         </div>
                     </div>
@@ -145,7 +145,7 @@
                     </div>
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="Tgl_SK" required/>
+                            <input type="date" class="form-control" name="Tgl_SK" required/>
                             <label class="form-label">Tgl_SK</label>
                         </div>
                     </div>

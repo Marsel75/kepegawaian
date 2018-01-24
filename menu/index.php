@@ -42,11 +42,10 @@
     <script src="../js/angular/angular.min.js"></script>
     <script src="../js/angular/angular-animate.min.js"></script>
     <script src="../js/angular/angular-route.js"></script>
-    <script src="../js/app.js"></script>
-    <script src="../js/Controller.js"></script>
+    
 </head>
 
-<body class="theme-red" ng-app="app">
+<body class="theme-red" ng-app="Ctrl" >
     <?
         session_start();
         include("../system/connection.php");
@@ -298,7 +297,7 @@
                 <!-- User Info -->
                 <div class="user-info">
                     <div class="image">
-                        <img src="images/user.png" width="48" height="48" alt="User" />
+                        <img src="../images/user.png" width="48" height="48" alt="User" />
                     </div>
                     <div class="info-container">
                         <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
@@ -386,6 +385,12 @@
                                     <a href="?p=riwayat_pendidikan">
                                         <i class="material-icons">home</i>
                                         <span>Riwayat Pendidikan</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?p=tgl">
+                                        <i class="material-icons">home</i>
+                                        <span>Tests Tangal</span>
                                     </a>
                                 </li>
                             </ul>
@@ -878,7 +883,7 @@
 
         <section class="content">
             <div class="container-fluid">
-                
+
                 <?php
             
             
@@ -939,17 +944,16 @@
         <script src="../js/admin.js"></script>
         <script src="../js/pages/index.js"></script>
         <script src="../js/pages/forms/basic-form-elements.js"></script>
-        <script src="../../plugins/jquery/jquery.min.js"></script>
 
 
         <!-- Select Plugin Js -->
-        <script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+        <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
         <!-- Autosize Plugin Js -->
-        <script src="../../plugins/autosize/autosize.js"></script>
+        <script src="../plugins/autosize/autosize.js"></script>
 
         <!-- Moment Plugin Js -->
-        <script src="../../plugins/momentjs/moment.js"></script>
+        <script src="../plugins/momentjs/moment.js"></script>
 
         <!-- Bootstrap Material Datetime Picker Plugin Js -->
         <script src="../plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
