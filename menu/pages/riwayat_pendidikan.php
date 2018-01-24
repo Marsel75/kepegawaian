@@ -48,9 +48,9 @@
                                 <td><?php echo $dtriwayatpendidikan['Tempat']?></td>
                                 <td><?php echo $dtriwayatpendidikan['Ketua']?></td>
                                 <td>
-                                    <button data-toggle="modal" data-target="#EditPendidikan"><i class="material-icons">create</i></button>
+                                    <button data-toggle="modal" data-target="#EditPendidikan<?php echo $dtriwayatpendidikan[0]?>"><i class="material-icons">create</i></button>
                                     <button data-toggle="modal" data-target="#Detailpegawai<?php echo $nopegawai?>"><i class="material-icons">view_agenda</i></button>
-                                    <div class="modal fade" id="EditPendidikan" tabindex="-1" role="dialog">
+                                    <div class="modal fade" id="<?php echo $dtriwayatpendidikan[0]?>" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <form name="FormRiwayatPendidikan" action="" method="POST" id="form_advanced_validation">

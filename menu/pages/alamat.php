@@ -49,13 +49,11 @@
                                 <td><?php echo $dtalamat['Kelurahan']?></td>
                                 <td><?php echo $dtalamat['Status']?></td>
                                 <td>
-                                    <button data-toggle="modal" data-target="#EditAlamat"><i class="material-icons">create</i></button>
-                                    <button data-toggle="modal" data-target="#Detailpegawai<?php echo $nopegawai?>"><i class="material-icons">view_agenda</i></button>
-
+                                    <button data-toggle="modal" data-target="#EditAlamat<?php echo $dtalamat['Id']?>"><i class="material-icons">create</i></button>
                                     <!--
                                         Edit Alamat
                                     -->
-                                    <div class="modal fade" id="EditAlamat" tabindex="-1" role="dialog">
+                                    <div class="modal fade" id="EditAlamat<?php echo $dtalamat['Id']?>" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <form name="FormPangkat" action="" method="POST" id="form_advanced_validation">
