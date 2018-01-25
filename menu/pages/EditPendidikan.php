@@ -20,9 +20,9 @@ if(isset($_GET['action'])==1)
                         <form name="FormPangkat" action="" method="POST" id="form_advanced_validation">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                <input type="text" class="form-control" value="<?php echo $nama;?>" disabled/>
-                                <label class="form-label">Nama Pegawai</label>
-                            </div>
+                                    <input type="text" class="form-control" value="<?php echo $nama;?>" disabled/>
+                                    <label class="form-label">Nama Pegawai</label>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-line">

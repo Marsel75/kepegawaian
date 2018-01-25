@@ -231,7 +231,7 @@
                                                                             </div>
                                                                             <div id="collapseTwo_9<?php echo $dtpegawai[0]?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_9<?php echo $dtpegawai[0]?>">
                                                                                 <div class="panel-body">
-                                                                                    <button data-toggle="modal" data-target="#TambahJabatan" data-dismiss="modal" class="btn bg-pink waves-effect"><i class="material-icons">add</i></button>
+                                                                                    <button data-toggle="modal" data-target="#TambahJabatan<?php echo $datanip;?>" data-dismiss="modal" class="btn bg-pink waves-effect"><i class="material-icons">add</i></button>
                                                                                     <div class="body table-responsive">
                                                                                         <table class="table">
                                                                                             <thead>
@@ -247,21 +247,31 @@
                                                                                                 </tr>
                                                                                             </thead>
                                                                                             <tbody>
-                                                                                                <tr ng-repeat="item in DataItem.RiwayatJabatan">
-                                                                                                    <td>{{$index+1}}</td>
-                                                                                                    <td>{{item.Jabatan}}</td>
-                                                                                                    <td>{{item.Pangkat}}</td>
-                                                                                                    <td>{{item.Tgl_Menjabat}}&nbsp;s/d&nbsp;<br>{{item.Tgl_Terakhir_Menjabat}}</td>
-                                                                                                    <td>{{item.Gaji_Pokok | currency:"Rp. ":0}}</td>
-                                                                                                    <td>{{item.No_SK_Jabatan}}</td>
-                                                                                                    <td>{{item.Tgl_SK}}</td>
-                                                                                                    <td>
-                                                                                                        <a href="?p=EditRiwayatJabatan" ng-click="SelectedJabatan(item)">><i class="material-icons">create</i></a>
-                                                                                                        <button data-toggle="modal" ng-click="SelectedJabatan(item)"><i class="material-icons">create</i></button>
-                                                                                                        <button data-toggle="modal" data-target="#Detailpegawai" ng-click="ReadDataPegawai(item)"><i class="material-icons">view_agenda</i></button>
+                                                                                                <?php
+                                                                                                    $nojabatan = 1;
+                                                                                                    
+                                                                                                    $qjabatan = mysql_query("select * from riwayat_jabatan rj, pangkat p, jabatan j where rj.Jabatan_Id = j.Id and rj.Pangkat_Id = p.Id and Nip='$datanip'")or die(mysql_error());
+                                                                                                    while($dtjabatan=mysql_fetch_array($qjabatan))
+                                                                                                    {?>
+                                                                                                        <tr>
+                                                                                                            <td><?php echo $nojabatan;?></td>
+                                                                                                            <td><?php echo $dtjabatan['Jabatan'];?></td>
+                                                                                                            <td><?php echo $dtjabatan['Pangkat'];?>/<?php echo $dtjabatan['Golongan'];?></td>
+                                                                                                            <td><?php echo $dtjabatan['Tgl_Menjabat'];?>&nbsp;s/d&nbsp;<br><?php echo $dtjabatan['Tgl_Terakhir_Menjabat'];?></td>
+                                                                                                            <td><?php echo $dtjabatan['Gaji_Pokok'];?></td>
+                                                                                                            <td><?php echo $dtjabatan['No_SK_Jabatan'];?></td>
+                                                                                                            <td><?php echo $dtjabatan['Tgl_SK'];?></td>
+                                                                                                            <td>
+                                                                                                                <a href="?p=EditJabatan&action=1&Nip=<?php echo $dtpegawai[0];?>&IdJabatan=<?php echo $dtjabatan[0];?>&nama=<?php echo $dtpegawai['Nama']?>" class="btn bg-deep-purple waves-effect">
+                                                                                                                    <i class="material-icons">create</i>
+                                                                                                                </a>
 
-                                                                                                    </td>
-                                                                                                </tr>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <?php
+                                                                                                        $nojabatan++;
+                                                                                                    }
+                                                                                                        ?>
                                                                                             </tbody>
                                                                                         </table>
                                                                                     </div>
@@ -286,6 +296,7 @@
                             $nopegawai++;
                             include 'form/FormTambahAlamat.php';
                             include 'form/FormTambahPendidikan.php';
+                            include 'form/FormTambahEditJabatan.php';
 
                             }
                         ?>
@@ -483,12 +494,6 @@
     </div>
 
 
-
-
-
-    <?php
-                                        include 'form/FormTambahEditJabatan.php';
-                                    ?>
 
 
 

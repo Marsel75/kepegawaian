@@ -81,7 +81,7 @@ if(isset($_POST['addPendidikan']))
     if($q)
     {
         echo "<script>alert('Pendidikan $Jenjang_Pendidikan Berhasil di simpan')</script>";
-        echo "<script>document.location='?p=riwayat_pendidikan'</script>";
+        echo "<script>document.location='?p=pegawai'</script>";
     }else{
         echo "<script>alert('Data Gagal di simpan')</script>";
     }
