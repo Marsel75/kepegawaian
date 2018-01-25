@@ -25,6 +25,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Foto</th>
                                 <th>Nip</th>
                                 <th>Nama</th>
                                 <th>Sex</th>
@@ -48,6 +49,13 @@
                                         <?php echo $nopegawai?>
                                     </th>
                                     <td>
+                                        <div class="user-info">
+                                            <div class="image">
+                                                <a href="" data-toggle="modal" data-target="#Detailpegawai<?php echo $dtpegawai[0]?>"><img src="img/<?php echo $dtpegawai['Photo']?>" width="100" alt="User"/></a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
                                         <?php echo $dtpegawai['Nip']?>
                                     </td>
                                     <td>
@@ -70,7 +78,7 @@
                                     </td>
                                     <td>
                                         <button data-toggle="modal" data-target="#Editpegawai" ng-click="Selected(item)"><i class="material-icons">create</i></button>
-                                        <button data-toggle="modal" data-target="#Detailpegawai<?php echo $dtpegawai[0]?>" ng-click="viewdetail(item)"><i class="material-icons">view_agenda</i></button>
+                                        <button data-toggle="modal" data-target="#Detailpegawai<?php echo $dtpegawai[0]?>"><i class="material-icons">view_agenda</i></button>
                                         <!--
                                     Detail Pegawai
                                 -->
@@ -464,7 +472,7 @@
     <div class="modal fade" id="Tambahpegawai" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form name="FormPangkat" action="" method="POST" id="form_advanced_validation">
+                <form name="FormPangkat" action="" method="POST" id="form_advanced_validation" enctype="multipart/form-data">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">Tambah Pegawai</h4>
                     </div>
@@ -540,10 +548,16 @@
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input name="Status" type="radio" class="with-gap" value="True" id="True" />
-                                <label for="True">Aktif</label>
-                                <input name="Status" type="radio" class="with-gap" value="False" id="False" />
-                                <label for="False">Tidak Aktif</label>
+                                <input name="Status" type="radio" class="with-gap" value="True" id="Truee" />
+                                <label for="Truee">Aktif</label>
+                                <input name="Status" type="radio" class="with-gap" value="False" id="Falsee" />
+                                <label for="Falsee">Tidak Aktif</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="file" class="form-control" name="foto"  required/>
+                                <label class="form-label">Tgl_Masuk</label>
                             </div>
                         </div>
                     </div>
@@ -575,18 +589,35 @@ if(isset($_POST['add']))
     $Tgl_Masuk = $_POST['Tgl_Masuk'];
     $JenisPegawai = $_POST['JenisPegawai'];
     $Status = $_POST['Status'];
-    $Photo = $_POST['Photo'];
+    $Photo = $_FILES['foto']['name'];
+
+    //==================================//		
+    //proses upload foto bandara/dermaga//
+    //==================================//
+    $dir       = 'img/'; //Folder penyimpanan file
+    $max_size  = 9000000; //Ukuran file maximal 4Mb
+    $nama_file = $_FILES['foto']['name']; //Nama file yang akan di Upload
+    $file_size = $_FILES['foto']['size']; //Ukuran file yang akan di Upload
+    $nama_tmp  = $_FILES['foto']['tmp_name']; //Nama file sementara
+    $upload = $dir . $nama_file; //Memposisikan direktori penyimpanan dan file
+    if($file_size<=$max_size){
+        if(move_uploaded_file($nama_tmp, $upload))
+        {
+            $q = mysql_query("insert into pegawai values('$Nip','$Nama','$Sex','$Tempat_lahir','$Tgl_lahir','$Agama','$Martial','$Tgl_Masuk','$JenisPegawai','$Status','$Photo')")or die(mysql_error());
+            if($q)
+            {
+                echo "<script>alert('Data berhasil di simpan')</script>";
+                echo "<script>document.location='?p=pegawai'</script>";
+            }else{
+                echo "<script>alert('Data Gagal di simpan')</script>";
+            }
+        }
+    }
 
     //echo "<script>alert('$Nip, $Nama, $Sex, $Tempat_lahir, $Tgl_lahir, $Agama, $Martial, $Tgl_Masuk,  $JenisPegawai, $Status, $Photo')</script>";
     
-    $q = mysql_query("insert into pegawai values('$Nip','$Nama','$Sex','$Tempat_lahir','$Tgl_lahir','$Agama','$Martial','$Tgl_Masuk','$JenisPegawai','$Status')")or die(mysql_error());
-    if($q)
-    {
-        echo "<script>alert('Data berhasil di simpan')</script>";
-        echo "<script>document.location='?p=pegawai'</script>";
-    }else{
-        echo "<script>alert('Data Gagal di simpan')</script>";
-    }
+    
+    
     
 }
 
