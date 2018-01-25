@@ -20,7 +20,7 @@ if(isset($_GET['action'])==1)
                         <form name="FormPangkat" action="" method="POST" id="form_advanced_validation" enctype="multipart/form-data">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="Nama" value="<?php echo $dtpegawai[1];?>" disabled/>
+                                    <input type="text" class="form-control" name="Nama" value="<?php echo $dtpegawai[1];?>"/>
                                     <label class="form-label">Nama</label>
                                 </div>
                             </div>
