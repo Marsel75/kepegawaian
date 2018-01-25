@@ -342,31 +342,26 @@
                                         <span>Jabatan</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="?p=profil">
-                                        <i class="material-icons">home</i>
-                                        <span>Profile Kantor</span>
-                                    </a>
-                                </li>
-                                 <li>
-                                    <a href="?p=pegawai">
-                                        <i class="material-icons">home</i>
-                                        <span>Pegawai</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="?p=kegiatan">
-                                        <i class="material-icons">home</i>
-                                        <span>Kegiatan</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="?p=kegiatan_kantor">
-                                        <i class="material-icons">home</i>
-                                        <span>Kegiatan Kantor</span>
-                                    </a>
-                                </li>
+                                
                             </ul>
+                        </li>
+                        <li>
+                            <a href="?p=profil">
+                                <i class="material-icons">home</i>
+                                <span>Profile Kantor</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="?p=pegawai">
+                                        <i class="material-icons">home</i>
+                                <span>Pegawai</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="?p=kegiatan_kantor">
+                                <i class="material-icons">home</i>
+                                <span>Kegiatan Kantor</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -593,8 +588,6 @@
         <script src="../js/pages/forms/basic-form-elements.js"></script>
 
 
-        <!-- Select Plugin Js -->
-        <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
         <!-- Autosize Plugin Js -->
         <script src="../plugins/autosize/autosize.js"></script>
@@ -607,6 +600,7 @@
 
         <!-- Demo Js -->
         <script src="../js/demo.js"></script>
+
 
 </body>
 

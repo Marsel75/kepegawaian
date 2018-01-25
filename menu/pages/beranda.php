@@ -1,0 +1,3 @@
+<center>
+    <h1>SISTEM INFORMASI PENDATAAN PEGAWAI <BR> PADA KANTOR .... <BR>KOTA JAYAPURA</h1>
+</center>

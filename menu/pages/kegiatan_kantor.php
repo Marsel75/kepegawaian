@@ -29,6 +29,7 @@
                             <th>Tempat</th>
                             <th>Hasil</th>
                             <th>Peserta</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,19 +39,97 @@
                             while($dtKegiatanKantor=mysql_fetch_array($q))
                             {?>
                             <tr>
-                                <th scope="row"><?php echo $no?></th>
-                                <td><?php echo $dtKegiatanKantor[1]?></td>
-                                <td><?php echo $dtKegiatanKantor[2]?></td>
-                                <td><?php echo $dtKegiatanKantor[3]?></td>
-                                <td><?php echo $dtKegiatanKantor[4]?></td>
-                                <td><?php echo $dtKegiatanKantor[5]?></td>
-                                <td><?php echo $dtKegiatanKantor[6]?></td>
+                                <th scope="row">
+                                    <?php echo $no?>
+                                </th>
+                                <td>
+                                    <?php echo $dtKegiatanKantor[1]?>
+                                </td>
+                                <td>
+                                    <?php echo $dtKegiatanKantor[2]?>
+                                </td>
+                                <td>
+                                    <?php echo $dtKegiatanKantor[3]?>
+                                </td>
+                                <td>
+                                    <?php echo $dtKegiatanKantor[4]?>
+                                </td>
+                                <td>
+                                    <?php echo $dtKegiatanKantor[5]?>
+                                </td>
+                                <td>
+                                    <?php echo $dtKegiatanKantor[6]?>
+                                </td>
+                                <td>
+                                    <button data-toggle="modal" data-target="#Edit<?php echo $dtKegiatanKantor[0]?>"><i class="material-icons">create</i></button>
+                                    <div class="modal fade" id="Edit<?php echo $dtKegiatanKantor[0]?>" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <form name="FormPangkat" action="" method="POST" id="form_advanced_validation">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="defaultModalLabel">Tambah Kegiatan</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="Nama_Kegiatan" required/>
+                                                                <label class="form-label">Nama_Kegiatan</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="date" class="form-control" name="Tgl_Mulai" required/>
+                                                                <label class="form-label">Tgl_Mulai</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="date" class="form-control" name="Tgl_Selesai" required/>
+                                                                <label class="form-label">Tgl_Selesai</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="Tempat" required/>
+                                                                <label class="form-label">Tempat</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="Hasil" required/>
+                                                                <label class="form-label">Hasil</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="Peserta" required/>
+                                                                <label class="form-label">Peserta</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-float">
+                                                            <div class="form-line">
+                                                                <textarea class="form-control" name="Keterangan" ></textarea>
+                                                                <label class="form-label">Keterangan</label>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <input type="submit" class="btn btn-link waves-effect" value="Simpan" name="add">
+                                                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                             <?php
                             $no++;
                             }
                         ?>
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -75,13 +154,13 @@
                     </div>
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="Tgl_Mulai" required/>
+                            <input type="date" class="form-control" name="Tgl_Mulai" required/>
                             <label class="form-label">Tgl_Mulai</label>
                         </div>
                     </div>
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="Tgl_Selesai" required/>
+                            <input type="date" class="form-control" name="Tgl_Selesai" required/>
                             <label class="form-label">Tgl_Selesai</label>
                         </div>
                     </div>
@@ -103,6 +182,13 @@
                             <label class="form-label">Peserta</label>
                         </div>
                     </div>
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <textarea class="form-control" name="Keterangan" ></textarea>
+                            <label class="form-label">Keterangan</label>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-link waves-effect" value="Simpan" name="add">
@@ -122,13 +208,20 @@ if(isset($_POST['add']))
     $Tempat = $_POST['Tempat'];
     $Hasil = $_POST['Hasil'];
     $Peserta = $_POST['Peserta'];
-    $q = mysql_query("insert into Kegiatan_Kantor values('', '$Nama_Kegiatan','$Tgl_Mulai','$Tgl_Selesai','$Tempat','$Hasil','$Peserta')")or die(mysql_error());
+    $Keterangan = $_POST['Keterangan'];
+    $q = mysql_query("insert into Kegiatan_Kantor values('', '$Nama_Kegiatan','$Tgl_Mulai','$Tgl_Selesai','$Tempat','$Hasil','$Peserta','$Keterangan')")or die(mysql_error());
     if($q)
     {
         echo "<script>alert('Data berhasil di simpan')</script>";
-        echo "<script>document.location='?p=Kegiatan_Kantor'</script>";
+        echo "<script>document.location='?p=kegiatan_kantor'</script>";
     }else{
         echo "<script>alert('Data Gagal di simpan')</script>";
     }
 }
 ?>
+
+  
+    </script>
+
+
+    

@@ -169,7 +169,9 @@
                                                                             </div>
                                                                             <div id="collapseTwo_10<?php echo $dtpegawai[0]?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_10<?php echo $dtpegawai[0]?>">
                                                                                 <div class="panel-body">
-                                                                                    <button data-toggle="modal" data-target="#TambahPendidikan<?php echo $datanip;?>" data-dismiss="modal" class="btn bg-pink waves-effect"><i class="material-icons">add</i></button>
+                                                                                <a href="?p=FormTambahPendidikan&action=1&Nip=<?php echo $dtpegawai[0];?>&nama=<?php echo $dtpegawai['Nama']?>" class="btn bg-pink waves-effect">
+                                                                                                                    <i class="material-icons">add</i>
+                                                                                                                </a>
                                                                                     <div class="body table-responsive">
                                                                                         <table class="table">
                                                                                             <thead>
@@ -231,7 +233,9 @@
                                                                             </div>
                                                                             <div id="collapseTwo_9<?php echo $dtpegawai[0]?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_9<?php echo $dtpegawai[0]?>">
                                                                                 <div class="panel-body">
-                                                                                    <button data-toggle="modal" data-target="#TambahJabatan<?php echo $datanip;?>" data-dismiss="modal" class="btn bg-pink waves-effect"><i class="material-icons">add</i></button>
+                                                                                    <a href="?p=FormTambahEditJabatan&action=1&Nip=<?php echo $dtpegawai[0];?>&nama=<?php echo $dtpegawai['Nama']?>" class="btn bg-pink waves-effect">
+                                                                                                                    <i class="material-icons">add</i>
+                                                                                                                </a>
                                                                                     <div class="body table-responsive">
                                                                                         <table class="table">
                                                                                             <thead>
@@ -278,6 +282,65 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <div class="panel panel-col-cyan">
+                                                                            <div class="panel-heading" role="tab" id="headingTwo_11<?php echo $dtpegawai[0]?>">
+                                                                                <h4 class="panel-title">
+                                                                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_9<?php echo $dtpegawai[0]?>" href="#collapseTwo_11<?php echo $dtpegawai[0]?>" aria-expanded="false" aria-controls="collapseTwo_11<?php echo $dtpegawai[0]?>">
+                                                                                    Riwayat Kegiatan
+                                                                                </a>
+                                                                                </h4>
+                                                                            </div>
+                                                                            <div id="collapseTwo_11<?php echo $dtpegawai[0]?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_11<?php echo $dtpegawai[0]?>">
+                                                                                <div class="panel-body">
+                                                                                    <a href="?p=FormTambahKegiatan&action=1&Nip=<?php echo $dtpegawai[0];?>&nama=<?php echo $dtpegawai['Nama']?>" class="btn bg-pink waves-effect">
+                                                                                                                    <i class="material-icons">add</i>
+                                                                                                                </a>
+                                                                                    <div class="body table-responsive">
+                                                                                        <table class="table">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th>No</th>
+                                                                                                    <th>Jenis Kegiatan</th>
+                                                                                                    <th>Nama Kegiatan</th>
+                                                                                                    <th>Tanggal</th>
+                                                                                                    <th>Peran</th>
+                                                                                                    <th>Tempat</th>
+                                                                                                    <th>Hasil</th>
+                                                                                                    <th>Action</th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <?php
+                                                                                                    $nokegiatan = 1;
+                                                                                                    
+                                                                                                    $qkegiatan = mysql_query("select * from kegiatan")or die(mysql_error());
+                                                                                                    while($dtkegiatan=mysql_fetch_array($qkegiatan))
+                                                                                                    {?>
+                                                                                                        <tr>
+                                                                                                            <td><?php echo $nokegiatan;?></td>
+                                                                                                            <td><?php echo $dtkegiatan['Jenis_Kegiatan'];?></td>
+                                                                                                            <td><?php echo $dtkegiatan['Nama_Kegiatan'];?></td>
+                                                                                                            <td><?php echo $dtkegiatan['Tgl_Mulai'];?>&nbsp;s/d&nbsp;<br><?php echo $dtjabatan['Tgl_Selesai'];?></td>
+                                                                                                            <td><?php echo $dtkegiatan['Peran'];?></td>
+                                                                                                            <td><?php echo $dtkegiatan['Tempat'];?></td>
+                                                                                                            <td><?php echo $dtkegiatan['Hasil'];?></td>
+                                                                                                            <td>
+                                                                                                                <a href="?p=EditKegiatan&action=1&Nip=<?php echo $dtpegawai[0];?>&IdJabatan=<?php echo $dtkegiatan[0];?>&nama=<?php echo $dtpegawai['Nama']?>" class="btn bg-deep-purple waves-effect">
+                                                                                                                    <i class="material-icons">create</i>
+                                                                                                                </a>
+
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <?php
+                                                                                                        $nojabatan++;
+                                                                                                    }
+                                                                                                        ?>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -295,8 +358,8 @@
                                 <?php
                             $nopegawai++;
                             include 'form/FormTambahAlamat.php';
-                            include 'form/FormTambahPendidikan.php';
-                            include 'form/FormTambahEditJabatan.php';
+                            //include 'form/FormTambahPendidikan.php';
+                            //include 'form/FormTambahEditJabatan.php';
 
                             }
                         ?>
