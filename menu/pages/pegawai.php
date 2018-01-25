@@ -77,8 +77,10 @@
                                         <?php echo $dtpegawai['Status']?>
                                     </td>
                                     <td>
-                                        <button data-toggle="modal" data-target="#Editpegawai" ng-click="Selected(item)"><i class="material-icons">create</i></button>
-                                        <button data-toggle="modal" data-target="#Detailpegawai<?php echo $dtpegawai[0]?>"><i class="material-icons">view_agenda</i></button>
+                                        <a href="?p=EditPegawai&action=1&Nip=<?php echo $dtpegawai[0];?>" class="btn bg-deep-purple waves-effect">
+                                            <i class="material-icons">create</i>
+                                        </a>
+                                        <button data-toggle="modal" data-target="#Detailpegawai<?php echo $dtpegawai[0]?>" class="btn bg-deep-purple waves-effect"><i class="material-icons">view_agenda</i></button>
                                         <!--
                                     Detail Pegawai
                                 -->
