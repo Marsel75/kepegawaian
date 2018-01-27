@@ -11,6 +11,7 @@ if($conn)
     $open_Db = mysql_select_db($db);
     if(!$open_Db)
     {
+        
         echo "<script>alert('Database Tidak Ditemukan')</script>";
     }
 }else{

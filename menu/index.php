@@ -44,12 +44,10 @@
 
 <body class="theme-red" ng-app="Ctrl" >
     <?
-        //session_start();
         include("../system/connection.php");
-        /*if(!isset($_SESSION['user']))
-        {
-            echo"<script>document.location='../login.php'</script>";
-        }*/
+        include "fungsi.php";
+        session_start();
+		config_login();
         ?>
         <!-- Page Loader -->
         <div class="page-loader-wrapper">
@@ -116,8 +114,13 @@
                         <img src="../images/user.png" width="48" height="48" alt="User" />
                     </div>
                     <div class="info-container">
+<<<<<<< HEAD
                         <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Marsel Adrian Kogoya</div>
                         <div class="email">Kogoyamarsel@gmail.com</div>
+=======
+                        <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['Level']?></div>
+                        <div class="email"><?php echo $_SESSION['Email']?></div>
+>>>>>>> ef7fb9e46b6e68e5a68564993b138ac09a3743f2
                         <div class="btn-group user-helper-dropdown">
                             <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                             <ul class="dropdown-menu pull-right">
@@ -127,7 +130,7 @@
                                 <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
                                 <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                                 <li role="seperator" class="divider"></li>
-                                <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                                <li><a href="api/datas/logout.php"><i class="material-icons">input</i>Sign Out</a></li>
                             </ul>
                         </div>
                     </div>
