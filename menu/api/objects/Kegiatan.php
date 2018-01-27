@@ -1,21 +1,20 @@
 <?php
-class Pegawai{
+class Kegiatan{
  
     // database connection and table name
     private $conn;
-    private $table_name = "pegawai";
+    private $table_name = "kegiatan";
  
     // object properties
+    public $Id;
     public $Nip;
-    public $Nama;
-    public $Sex;
-    public $Tempat_Lahir;
-    public $Tgl_Lahir;
-    public $Agama;
-    public $Status_Perkawinan;
-    public $Tgl_Masuk;
-    public $Jenis_Pegawai;
-    public $Status;
+    public $Jenis_Kegiatan;
+    public $Nama_Kegiatan;
+    public $Tgl_Mulai;
+    public $Tgl_Selesai;
+    public $Peran;
+    public $Tempat;
+    public $Hasil;
  
     // constructor with $db as database connection
     public function __construct($db){
@@ -37,17 +36,17 @@ class Pegawai{
        return $stmt;
     }
 
-    function readKategori(){
+    function readByNip(){
         
         // select all query
-        $query = "SELECT * from " . $this->table_name . " where KategoriId=?";
+        $query = "SELECT * from " . $this->table_name . " where Nip=?";
      
         // prepare query statement
         $stmt = $this->conn->prepare($query);
 
-        $this->KategoriId=htmlspecialchars(strip_tags($this->KategoriId));
+        $this->Nip=htmlspecialchars(strip_tags($this->Nip));
 
-        $stmt->bindParam(1, $this->KategoriId);
+        $stmt->bindParam(1, $this->Nip);
      
         // execute query
         $stmt->execute();
@@ -59,19 +58,22 @@ class Pegawai{
     function readOne(){
         
            // select all query
-           $query = "SELECT * from " . $this->table_name . " where Nip=?";
+           $query = "SELECT * from " . $this->table_name . " where IdBarang=?";
         
            // prepare query statement
            $stmt = $this->conn->prepare($query);
 
-           $this->Nip=htmlspecialchars(strip_tags($this->Nip));
+           $this->IdBarang=htmlspecialchars(strip_tags($this->IdBarang));
 
-           $stmt->bindParam(1, $this->Nip);
+           $stmt->bindParam(1, $this->IdBarang);
         
            // execute query
            $stmt->execute();
-           
-           return $stmt;
+           $row = $stmt->fetch(PDO::FETCH_ASSOC);
+           $this->NamaBarang= $row['NamaBarang'];
+           $this->Stock=$row['Stock'];
+           $this->Keterangan=$row['Keterangan'];
+           $this->KategoriId=$row['KategoriId'];
         }
 
     

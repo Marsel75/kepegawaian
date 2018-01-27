@@ -14,6 +14,7 @@ include_once '../objects/Jabatan.php';
 include_once '../objects/Pangkat.php';
 include_once '../objects/RiwayatJabatan.php';
 include_once '../objects/Alamat.php';
+include_once '../objects/Kegiatan.php';
 
 
 
@@ -34,9 +35,15 @@ $pangkat = new Pangkat($db);
 $riwayatjabatan = new RiwayatJabatan($db);
 
 $alamat = new Alamat($db);
- 
+
+$kegiatan = new Kegiatan($db);
+
+//$data =json_decode(file_get_contents("php://input"));
+session_start();
+$DataNip=$_SESSION['DataNip'];
+$pegawai->Nip= $DataNip;
 // query products
-$stmt = $pegawai->read();   
+$stmt = $pegawai->readOne();   
 $num = $stmt->rowCount();
  
 // check if more than 0 record found
@@ -44,7 +51,10 @@ if($num>0){
  
     // products array
     $pegawai_arr=array();
-    $pegawai_arr["records"]=array();
+    $pegawai_arr=array(
+        "records"=>array(),
+        "Nip"=>$DataNip
+    );
  
     // retrieve our table contents
     // fetch() is faster than fetchAll()
@@ -69,10 +79,12 @@ if($num>0){
             "Photo"=>$Photo,
             "JenjangPendidikan"=>array(),
             "RiwayatJabatan"=>array(),
-            "Alamat"=>array()
+            "Alamat"=>array(),
+            "Kegiatan"=>array(),
+            "TanggalBuat"=>date('d F Y')
         );
 
-        $pendidikan->Nip=$Nip;
+        $pendidikan->Nip=$DataNip;
         $stmtpendidikan = $pendidikan->readByNip();
         $numpendidikan = $stmtpendidikan->rowCount();
         if($numpendidikan>0)
@@ -98,7 +110,7 @@ if($num>0){
                 }
         }
 
-        $riwayatjabatan->Nip = $Nip;
+        $riwayatjabatan->Nip = $DataNip;
 
         $stmtriwayatjabatan = $riwayatjabatan->readByNip();
         $numriwayatjabatan = $stmtriwayatjabatan->rowCount();
@@ -131,7 +143,7 @@ if($num>0){
 
                 }
         }
-        $alamat->Nip=$Nip;
+        $alamat->Nip=$DataNip;
         $stmtalamat = $alamat->readByNip();
         $numalamat = $stmtalamat->rowCount();
         if($numalamat>0)
@@ -154,11 +166,36 @@ if($num>0){
                 array_push($pegawai_item["Alamat"], $itemalamat);
             }
         }
+        $kegiatan->Nip=$DataNip;
+        $stmtkegiatan=$kegiatan->readByNip();
+        $numkegiatan = $stmtkegiatan->rowCount();
+        if($numkegiatan>0)
+        {
+            while ($rowkegiatan = $stmtkegiatan->fetch(PDO::FETCH_ASSOC)){
+
+                // extract row
+                // this will make $row['name'] to
+                // just $name only
+                    extract($rowkegiatan);
+                    $itemkegiatan = array(
+                        'Id' => $Id,
+                        'Jenis_Kegiatan'=>$Jenis_Kegiatan,
+                        'Nama_Kegiatan'=>$Nama_Kegiatan,
+                        'Tgl_Mulai'=>$Tgl_Mulai,
+                        'Tgl_Selesai'=>$Tgl_Selesai,
+                        'Peran'=>$Peran,
+                        'Tempat'=>$Tempat,
+                        'Hasil'=>$Hasil 
+                    );
+                    array_push($pegawai_item["Kegiatan"], $itemkegiatan);
+            }            
+        }
+        echo json_encode($pegawai_item);
  
-        array_push($pegawai_arr["records"], $pegawai_item);
+        //array_push($pegawai_arr["records"], $pegawai_item);
     }
  
-    echo json_encode($pegawai_arr);
+    //echo json_encode($pegawai_arr);
 }
  
 else{

@@ -14,8 +14,7 @@
                             </a>
                             <ul class="dropdown-menu pull-right">
                                 <li><a href="javascript:void(0);" data-toggle="modal" data-target="#Tambahpegawai">Tambah Pegawai</a></li>
-                                <li><a href="javascript:void(0);">Another action</a></li>
-                                <li><a href="javascript:void(0);">Something else here</a></li>
+                                <li><a href="../menu/pages/Laporan/LaporanKeseluruhan.php" target="_blank">Cetak Pegawai Aktif</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -81,6 +80,9 @@
                                             <i class="material-icons">create</i>
                                         </a>
                                         <button data-toggle="modal" data-target="#Detailpegawai<?php echo $dtpegawai[0]?>" class="btn bg-deep-purple waves-effect"><i class="material-icons">view_agenda</i></button>
+                                        <a href="../menu/pages/Laporan/LaporanPegawai.php?Nip=<?php echo $dtpegawai[0];?>" class="btn bg-deep-purple waves-effect" target="_blank">
+                                            <i class="material-icons">print</i>
+                                        </a>
                                         <!--
                                     Detail Pegawai
                                 -->
