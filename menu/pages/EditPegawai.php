@@ -189,7 +189,7 @@ if(isset($_GET['action'])==1)
             if($file_size<=$max_size){
                 if(move_uploaded_file($nama_tmp, $upload))
                 {
-                    $q = mysql_query("UPDATE pegawai SET Sex= '$Sex', Tempat_Lahir= '$Tempat_lahir', Tgl_Lahir= '$Tgl_lahir', Agama= '$Agama', Status_Perkawinan= '$Martial', Tgl_Masuk= '$Tgl_Masuk', Jenis_Pegawai= '$JenisPegawai', Status= '$Status' where Nip= '$Nip', Photo = '$Photo'")or die(mysql_error());
+                    $q = mysql_query("UPDATE pegawai SET Sex= '$Sex', Tempat_Lahir= '$Tempat_lahir', Tgl_Lahir= '$Tgl_lahir', Agama= '$Agama', Status_Perkawinan= '$Martial', Tgl_Masuk= '$Tgl_Masuk', Jenis_Pegawai= '$JenisPegawai', Status= '$Status', Photo = '$Photo' where Nip= '$Nip'")or die(mysql_error());
                     if($q)
                     {
                         echo "<script>alert('Data berhasil di simpan')</script>";
