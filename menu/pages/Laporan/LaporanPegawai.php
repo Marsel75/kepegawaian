@@ -17,8 +17,8 @@
 
 <body ng-app="Ctrl" ng-controller="LaporanController" ng-init="Init()">
     <?php
-    session_start();
-    $_SESSION['DataNip']=$_GET['Nip'];
+    //session_start();
+    $DataNip=$_GET['Nip'];
     ?>
     <div id="page-wrap">
         <div id="col-12" style="border-bottom: solid;">
@@ -238,9 +238,11 @@
     <script>
         angular.module("Ctrl", [])
             .controller("LaporanController", function($scope, $http) {
+                var NIP = "<?php echo $DataNip?>";
+                
                 $scope.DataRekap = [];
                 $scope.Init = function() {
-                    var GetNota = "../../api/datas/readDataPegawai.php";
+                    var GetNota = "../../api/datas/readDataPegawai.php?Nip="+NIP;
                     $http({
                             method: "get",
                             url: GetNota

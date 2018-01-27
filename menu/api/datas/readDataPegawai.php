@@ -38,9 +38,8 @@ $alamat = new Alamat($db);
 
 $kegiatan = new Kegiatan($db);
 
-//$data =json_decode(file_get_contents("php://input"));
-session_start();
-$DataNip=$_SESSION['DataNip'];
+
+$DataNip=$_GET['Nip'];
 $pegawai->Nip= $DataNip;
 // query products
 $stmt = $pegawai->readOne();   
@@ -200,7 +199,7 @@ if($num>0){
  
 else{
     echo json_encode(
-        array("message" => "No Pegawai found")
+        array("message" => $DataNip)
     );
 }
 ?>

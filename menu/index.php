@@ -86,25 +86,7 @@
                 <div class="navbar-header">
                     <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                     <a href="javascript:void(0);" class="bars"></a>
-<<<<<<< HEAD
                     <a class="navbar-brand" href="?p=pangkat">PENDATAAN PEGAWAI</a>
-=======
-                    <a class="navbar-brand" href="index.html"><marquee>Selamat Datang Admin</marquee></a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Call Search -->
-                        <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
-                        <!-- #END# Call Search -->
-                        <!-- Notifications -->
-                       
-                        <!-- #END# Notifications -->
-                        <!-- Tasks -->
-                        
-                        <!-- #END# Tasks -->
-                        <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
-                    </ul>
->>>>>>> 217d71d54b238542a51e5a370cba8faf19a3ae2b
                 </div>
             </div>
         </nav>
@@ -118,13 +100,8 @@
                         <img src="../images/user.png" width="48" height="48" alt="User" />
                     </div>
                     <div class="info-container">
-<<<<<<< HEAD
-                        <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Marsel Adrian Kogoya</div>
-                        <div class="email">Kogoyamarsel@gmail.com</div>
-=======
                         <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['Level']?></div>
                         <div class="email"><?php echo $_SESSION['Email']?></div>
->>>>>>> ef7fb9e46b6e68e5a68564993b138ac09a3743f2
                         <div class="btn-group user-helper-dropdown">
                             <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                             <ul class="dropdown-menu pull-right">
@@ -195,17 +172,10 @@
                 <!-- Footer -->
                 <div class="legal">
                     <div class="copyright">
-<<<<<<< HEAD
                         <a href="javascript:void(0);"><b>Marsel Kogoya<b></a>.
                     </div>
                     <div class="version">
                         <b>NPM: 201411...</b>
-=======
-                        &copy; Copyright 2018_Marsel <a href="javascript:void(0);"></a>.
-                    </div>
-                    <div class="version">
-                        <b></b>
->>>>>>> 217d71d54b238542a51e5a370cba8faf19a3ae2b
                     </div>
                 </div>
                 <!-- #Footer -->

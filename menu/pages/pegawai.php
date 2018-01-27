@@ -32,7 +32,7 @@
                                 <th>Tgl_Lahir</th>
                                 <th>Agama</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th width="200px">Action</th>
                             </tr>
                         </thead>
                         <tbody>
