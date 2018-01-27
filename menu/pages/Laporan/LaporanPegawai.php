@@ -32,7 +32,7 @@
                         <center>
                             <h3>PEMERINTAH KOTA JAYAPURA</h3>
                             <H2>KANTOR KELURAHAN ENTROP DISTRIK JAYAPURA SELATA<BR> PROVINSI PAPUA</H2>
-                            <H5>Jalan Kabupaten III No. 2 Telp. 0967 537380 Jayapura-Papua</H5>
+                            <H5>Jln. Kelapa II Entrop, Kecamatan Jayapura Selatan, Kota Jayapura</H5>
                         </center>
                     </div>
                     <div id="col-2">
