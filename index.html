@@ -1,126 +1,569 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sign In | Bootstrap Based Admin Template - Material Design</title>
-    <!-- Favicon-->
-    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
-    <!-- Bootstrap Core Css -->
-    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Waves Effect Css -->
-    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
-
-    <!-- Animation Css -->
-    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
-
-    <!-- Custom Css -->
-    <link href="css/style.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1">
+    <title>Unique</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="css/animate.css" rel="stylesheet" type="text/css">
     <script src="js/angular/angular.min.js"></script>
-    <script src="js/angular/angular-route.js"></script>
+    <script src="js/angular/angular-animate.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="js/respond-1.1.0.min.js"></script>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/html5element.js"></script>
+<![endif]-->
+
 </head>
 
-<body class="login-page" ng-app="Ctrl" ng-controller="LoginController">
-    <div class="login-box" ng-init="Init()">
-        <div class="logo">
-            <a href="javascript:void(0);"><img src="images/LogoJayapura.png" width="120px"></a>
-        </div>
-        <div class="card">
-            <div class="body">
-                <form id="sign_in" method="POST">
-                    <div class="msg">Sign in to start your session</div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">person</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="text" class="form-control" name="username" ng-model="DataLogin.Email" placeholder="Username" required autofocus>
-                        </div>
+<body ng-app="Ctrl" ng-controller="LaporanController" ng-init="Init()">
+
+    <!--Header_section-->
+    <header id="header_wrapper">
+        <div class="container">
+            <div class="header_box">
+                <div class="logo">
+                    <a href="#"><img src="img/logo.png" alt="logo"></a>
+                </div>
+                <nav class="navbar navbar-inverse" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
                     </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">lock</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="password" class="form-control" name="password" ng-model="DataLogin.Password" placeholder="Password" required>
-                        </div>
+                    <div id="main-nav" class="collapse navbar-collapse navStyle">
+                        <ul class="nav navbar-nav" id="mainNav">
+                            <li class="active"><a href="#hero_section" class="scroll-link">Home</a></li>
+                            <li class="dropdown scroll-link">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile<strong class="caret"></strong></a>
+                                <ul class="dropdown-menu">
+                                    <li class="scroll-link">
+                                        <a href="#service">Visi Misi</a>
+                                    </li class="scroll-link">
+                                    <li class="scroll-link">
+                                        <a href="#team">Struktur</a>
+                                    </li class="scroll-link">
+                                </ul>
+                            </li>
+                            <li><a href="#aboutUs" class="scroll-link">Tentang Kami</a></li>
+                            <li><a href="#Portfolio" class="scroll-link">Kegiatan</a></li>
+                            <li><a href="#contact" class="scroll-link">Contact</a></li>
+                        </ul>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-8 p-t-5">
-                            <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
-                            <label for="rememberme">Remember Me</label>
-                        </div>
-                        <div class="col-xs-4">
-                            <button class="btn btn-block bg-pink waves-effect" type="submit" ng-click="Sign()">SIGN IN</button>
-                        </div>
-                    </div>
-                    <div class="row m-t-15 m-b--20">
-                        <div class="col-xs-6">
-                            <a href="sign-up.html">Register Now!</a>
-                        </div>
-                        <div class="col-xs-6 align-right">
-                            <a href="forgot-password.html">Forgot Password?</a>
-                        </div>
-                    </div>
-                </form>
+                </nav>
             </div>
         </div>
-    </div>
+    </header>
+    <!--Header_section-->
 
-    <!-- Jquery Core Js -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+    <!--Hero_Section-->
+    <section id="hero_section" class="top_cont_outer">
+        <div class="hero_wrapper">
+            <div class="container">
+                <div class="hero_section">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-md-2">
+                            </div>
+                            <div class="zoomIn wow animated col-md-10" style="margin-top:100px;">
+                                <center>
+                                    <h6>
+                                        <font size="6px" color="white">
+                                            <br> SISTEM INFORMASI PENDATAAN PEGAWAI
+                                            <BR> PADA KANTOR KELURAHAN ENTROP <br>DISTRIK JAYAPURA SELATAN
+                                            <BR>PROVINSI PAPUA
+                                            <br><br>
+                                            <br>
+                                        </font>
+                                    </h6>
+                                </center>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!--Hero_Section-->
 
-    <!-- Bootstrap Core Js -->
-    <script src="plugins/bootstrap/js/bootstrap.js"></script>
+    <section id="aboutUs">
+        <!--Aboutus-->
+        <div class="inner_wrapper">
+            <div class="container">
+                <h2>Tentang Kami</h2>
+                <div class="inner_section">
+                    <div class="row">
+                        <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right"><img src="img/about-img1.jpg" class="img-circle delay-03s animated wow zoomIn" alt=""></div>
+                        <div class=" col-lg-7 col-md-7 col-sm-7 col-xs-12 pull-left">
+                            <div class=" delay-01s animated fadeInDown wow animated">
+                                <p style="text-align:justify;">Kelurahan Entrop terletak di Distrik Jayapura Selatan Kota Jayapura, dengan alamat : Jl. Sumber Air No.2A, Kelurahan Entrop, Jayapura selatan, Kode Pos 99224.</p> <br/>
+                                <p style="text-align:justify;">Kelurahan Entrop yang memiliki penduduk heterogen atau terdiri dari berbagai suku, baik suku di Papua maupun Suku lain dari luar papua di Seluruh Indonesia. Kelurahan Entrop merupakan salah satu Kelurahan yang memiliki
+                                    tigkat mobilisasi penduduk yang cukup tinggi, terbukti dengan jumlah penduduk yang terus meningkat tiap tahunnya, sejak tahun 2012 sampai dengan tahun 2014 terhitung penduduk di Kelurahan entrop meningkat sekitar 35%,
+                                    Keluar masuknya penduduk yang aktiv tiap tahunnya sehingga kelurahan entrop memerlukan penanganan pelayanan pemerintahan, kegiatan kemasyarakatan yang lebih baik guna mewujudkan pelayanan Prima. Penduduk dari berbagai
+                                    agama,Profesi,pendidikan tersebar dalam 13 Lingkungan Rukun Warga ( RW ) dan 45 Lingkungan Rukun tetangga ( RT ).</p> <br>
+                                <p style="text-align:justify;">Jumlah Penduduk pun, selalu meningkat, sesuai dengan Data Kependudukan yang diperoleh dari RT dan RW, jumlah Penduduk ini tersebar dalam Luas 16,94 Km2 atau sekitar 1,80 % dari Luas Kota Jayapura. </p> <br>
+                            </div>
+                            <div class="work_bottom"> <span>Ingin mengetahui lebih tentang kami</span> <a href="#contact" class="contact_btn">Hubungi Kami</a> </div>
+                        </div>
 
-    <!-- Waves Effect Plugin Js -->
-    <script src="plugins/node-waves/waves.js"></script>
+                    </div>
 
-    <!-- Validation Plugin Js -->
-    <script src="plugins/jquery-validation/jquery.validate.js"></script>
 
-    <!-- Custom Js -->
-    <script src="js/admin.js"></script>
-    <script src="js/pages/examples/sign-in.js"></script>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Aboutus-->
+
+
+    <!--Service-->
+    <section id="service">
+        <div class="container">
+            <h2>Visi Misi</h2>
+            <div class="service_wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="service_block">
+                            <div ng-bind-html="DataRekap.Visi_Misi" style="text-align:justify;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!--Service-->
+
+
+
+
+    <!-- Portfolio -->
+    <section id="Portfolio" class="content">
+
+        <!-- Container -->
+        <div class="container portfolio_title">
+
+            <!-- Title -->
+            <div class="section-title">
+                <h2>Kegiatan</h2>
+            </div>
+            <!--/Title -->
+
+        </div>
+        <!-- Container -->
+
+        <div class="portfolio-top"></div>
+
+        <!-- Portfolio Filters -->
+        <div class="portfolio">
+
+            <div id="filters" class="sixteen columns">
+                <ul class="clearfix">
+                    <li>
+                        <a id="all" href="#" data-filter="*" class="active">
+                            <h5>All</h5>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="#" data-filter=".design">
+                            <h5>Design</h5>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="#" data-filter=".android">
+                            <h5>Android</h5>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="#" data-filter=".appleIOS">
+                            <h5>Apple IOS</h5>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="#" data-filter=".web">
+                            <h5>Web App</h5>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--/Portfolio Filters -->
+
+            <!-- Portfolio Wrapper -->
+            <div class="isotope fadeInLeft animated wow" style="position: relative; overflow: hidden; height: 480px;" id="portfolio_wrapper">
+
+                <!-- Portfolio Item -->
+                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   appleIOS isotope-item">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic1.jpg" alt="Portfolio 1"> </div>
+                    <div class="item_overlay">
+                        <div class="item_info">
+                            <h4 class="project_name">SMS Mobile App</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--/Portfolio Item -->
+
+                <!-- Portfolio Item-->
+                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(337px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  design isotope-item">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic2.jpg" alt="Portfolio 1"> </div>
+                    <div class="item_overlay">
+                        <div class="item_info">
+                            <h4 class="project_name">Finance App</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--/Portfolio Item -->
+
+                <!-- Portfolio Item -->
+                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(674px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  design  isotope-item">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic3.jpg" alt="Portfolio 1"> </div>
+                    <div class="item_overlay">
+                        <div class="item_info">
+                            <h4 class="project_name">GPS Concept</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--/Portfolio Item-->
+
+                <!-- Portfolio Item-->
+                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(1011px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  android  prototype web isotope-item">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic4.jpg" alt="Portfolio 1"> </div>
+                    <div class="item_overlay">
+                        <div class="item_info">
+                            <h4 class="project_name">Shopping</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Portfolio Item -->
+
+                <!-- Portfolio Item -->
+                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  design isotope-item">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic5.jpg" alt="Portfolio 1"> </div>
+                    <div class="item_overlay">
+                        <div class="item_info">
+                            <h4 class="project_name">Managment</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--/Portfolio Item -->
+
+                <!-- Portfolio Item -->
+                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(337px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  web isotope-item">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic6.jpg" alt="Portfolio 1"> </div>
+                    <div class="item_overlay">
+                        <div class="item_info">
+                            <h4 class="project_name">iPhone</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--/Portfolio Item -->
+
+                <!-- Portfolio Item  -->
+                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(674px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  design web isotope-item">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic7.jpg" alt="Portfolio 1"> </div>
+                    <div class="item_overlay">
+                        <div class="item_info">
+                            <h4 class="project_name">Nexus Phone</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--/Portfolio Item -->
+
+                <!-- Portfolio Item -->
+                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(1011px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   android isotope-item">
+                    <div class="portfolio_img"> <img src="img/portfolio_pic8.jpg" alt="Portfolio 1"> </div>
+                    <div class="item_overlay">
+                        <div class="item_info">
+                            <h4 class="project_name">Android</h4>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <!--/Portfolio Item -->
+
+            </div>
+            <!--/Portfolio Wrapper -->
+
+        </div>
+        <!--/Portfolio Filters -->
+
+        <div class="portfolio_btm"></div>
+
+
+        <div id="project_container">
+            <div class="clear"></div>
+            <div id="project_data"></div>
+        </div>
+
+
+    </section>
+    <!--/Portfolio -->
+
+
+    <section class="page_section team" id="team">
+        <!--main-section team-start-->
+        <div class="container">
+            <h2>Struktur</h2>
+            <h6>Kelurahan Entrop, Distrik Jayapura Selatan</h6>
+            <div class="member-area">
+                <div class="row">
+                    <div class="col-md-6" ng-repeat="item in DataRekap.Pegawai">
+                        <div class="member wow bounceInUp animated">
+                            <div class="member-container" data-wow-delay=".1s">
+                                <div class="inner-container">
+                                    <div class="author-avatar">
+                                        <img class="img-circle" src="aplication/menu/img/{{item.Photo}}" alt="Team Menber">
+                                    </div>
+                                    <!-- /.author-avatar -->
+
+                                    <div class="member-details">
+                                        <div class="member-top">
+                                            <h4 class="name">
+                                                {{item.Nama}}
+                                            </h4>
+                                            <span class="designation">
+													{{item.Jabatan}}
+												</span>
+                                        </div>
+                                        <!-- /.member-top -->
+
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.
+                                        </p>
+                                        <div class="member-social-link">
+                                            <a href="#" class="twitter-btn"><i class="fa fa-twitter"></i></a>
+                                            <a href="#" class="facebook-btn"><i class="fa fa-facebook"></i></a>
+                                            <a href="#" class="dribbble-btn"><i class="fa fa-dribbble"></i></a>
+                                            <a href="#" class="linkedin-btn"><i class="fa fa-linkedin"></i></a>
+                                        </div>
+                                        <!-- /.member-social-link -->
+                                    </div>
+                                    <!-- /.member-details -->
+                                </div>
+                                <!-- /.inner-container -->
+                            </div>
+                            <!-- /.member-container -->
+                        </div>
+                        <!-- /.member -->
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="member wow bounceInUp animated">
+                            <div class="member-container" data-wow-delay=".3s">
+                                <div class="inner-container">
+                                    <div class="author-avatar">
+                                        <img class="img-circle" src="img/team_pic2.jpg" alt="Team Menber">
+                                    </div>
+                                    <!-- /.author-avatar -->
+                                    <div class="member-details">
+                                        <div class="member-top">
+                                            <h4 class="name">
+                                                Mark lores
+                                            </h4>
+                                            <span class="designation">
+													Web Developer
+												</span>
+                                        </div>
+                                        <!-- /.member-top -->
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.
+                                        </p>
+                                        <div class="member-social-link">
+                                            <a href="#" class="twitter-btn"><i class="fa fa-twitter"></i></a>
+                                            <a href="#" class="facebook-btn"><i class="fa fa-facebook"></i></a>
+                                            <a href="#" class="dribbble-btn"><i class="fa fa-dribbble"></i></a>
+                                            <a href="#" class="linkedin-btn"><i class="fa fa-linkedin"></i></a>
+                                        </div>
+                                        <!-- /.member-social-link -->
+                                    </div>
+                                    <!-- /.member-details -->
+                                </div>
+                                <!-- /.inner-container -->
+                            </div>
+                            <!-- /.member-container -->
+                        </div>
+                        <!-- /.member -->
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="member wow bounceInUp animated">
+                            <div class="member-container" data-wow-delay=".5s">
+                                <div class="inner-container">
+                                    <div class="author-avatar">
+                                        <img class="img-circle" src="img/team_pic3.jpg" alt="Team Menber">
+                                    </div>
+                                    <!-- /.author-avatar -->
+                                    <div class="member-details">
+                                        <div class="member-top">
+                                            <h4 class="name">
+                                                Thomas Lere
+                                            </h4>
+                                            <span class="designation">
+													UX Designer
+												</span>
+                                        </div>
+                                        <!-- /.member-top -->
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.
+                                        </p>
+                                        <div class="member-social-link">
+                                            <a href="#" class="twitter-btn"><i class="fa fa-twitter"></i></a>
+                                            <a href="#" class="facebook-btn"><i class="fa fa-facebook"></i></a>
+                                            <a href="#" class="dribbble-btn"><i class="fa fa-dribbble"></i></a>
+                                            <a href="#" class="linkedin-btn"><i class="fa fa-linkedin"></i></a>
+                                        </div>
+                                        <!-- /.member-social-link -->
+                                    </div>
+                                    <!-- /.member-details -->
+                                </div>
+                                <!-- /.inner-container -->
+                            </div>
+                            <!-- /.member-container -->
+                        </div>
+                        <!-- /.member -->
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="member wow bounceInUp animated">
+                            <div class="member-container" data-wow-delay=".7s">
+                                <div class="inner-container">
+                                    <div class="author-avatar">
+                                        <img class="img-circle" src="img/team_pic4.jpg" alt="Team Menber">
+                                    </div>
+                                    <!-- /.author-avatar -->
+                                    <div class="member-details">
+                                        <div class="member-top">
+                                            <h4 class="name">
+                                                Grintel Mark
+                                            </h4>
+                                            <span class="designation">
+													Web Designer
+												</span>
+                                        </div>
+                                        <!-- /.member-top -->
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.
+                                        </p>
+                                        <div class="member-social-link">
+                                            <a href="#" class="twitter-btn"><i class="fa fa-twitter"></i></a>
+                                            <a href="#" class="facebook-btn"><i class="fa fa-facebook"></i></a>
+                                            <a href="#" class="dribbble-btn"><i class="fa fa-dribbble"></i></a>
+                                            <a href="#" class="linkedin-btn"><i class="fa fa-linkedin"></i></a>
+                                        </div>
+                                        <!-- /.member-social-link -->
+                                    </div>
+                                    <!-- /.member-details -->
+                                </div>
+                                <!-- /.inner-container -->
+                            </div>
+                            <!-- /.member-container -->
+                        </div>
+                        <!-- /.member -->
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+
+
+        </div>
+    </section>
+    <!--/Team-->
+    <!--Footer-->
+    <footer class="footer_wrapper" id="contact">
+        <div class="container">
+            <section class="page_section contact" id="contact">
+                <div class="contact_section">
+                    <h2>Contact Us</h2>
+                    <div class="row">
+                        <div class="col-lg-4">
+
+                        </div>
+                        <div class="col-lg-4">
+
+                        </div>
+                        <div class="col-lg-4">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-lg-12 wow fadeInLeft delay-06s">
+                        <div class="form">
+                            <!--NOTE: Update your email Id in "contact_me.php" file in order to receive emails from your contact form-->
+                            <form name="sentMessage" id="contactForm" novalidate>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <input type="text" class="form-control input-text" placeholder="Full Name" id="name" required data-validation-required-message="Please enter your name" />
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <input type="email" class="form-control input-text" placeholder="Email" id="email" required data-validation-required-message="Please enter your email" />
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <textarea rows="10" cols="100" class="form-control input-text" placeholder="Message" id="message" required data-validation-required-message="Please enter your message" minlength="5" data-validation-minlength-message="Min 5 characters" maxlength="999"
+                                            style="resize:none"></textarea>
+                                    </div>
+                                </div>
+                                <div id="success"> </div>
+                                <!-- For success/fail messages -->
+                                <button type="submit" class="btn btn-primary input-btn pull-right">Send</button><br />
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+        <div class="container">
+            <div class="footer_bottom"><span>Copyright © 2016,    Template by <a href="http://webthemez.com">WebThemez.com</a>. </span> </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery-scrolltofixed.js"></script>
+    <script type="text/javascript" src="js/jquery.nav.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="js/jquery.isotope.js"></script>
+    <script type="text/javascript" src="js/wow.js"></script>
+    <script src="contact/jqBootstrapValidation.js"></script>
+    <script src="contact/contact_me.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+
+
     <script>
         angular.module("Ctrl", [])
-            .controller("LoginController", function($scope, $http) {
-                $scope.DataLogin = {};
-                $scope.Datas = [];
+            .controller("LaporanController", function($scope, $http, $sce) {
+                $scope.DataRekap = [];
                 $scope.Init = function() {
 
-                }
-                $scope.Sign = function() {
 
-                    if ($scope.DataLogin.Email != undefined && $scope.DataLogin.Password != undefined) {
-                        var Data = $scope.DataLogin;
-                        var GetLogin = "menu/api/datas/login.php";
-                        $http({
-                                method: "post",
-                                url: GetLogin,
-                                data: Data
-                            })
-                            .then(function(response) {
-                                if (response.data.Level == "Admin")
-                                    window.location.href = 'menu/index.php';
-                                else
-                                    alert("Password is wrong")
-                            }, function(error) {
-                                alert(error.message);
-                            })
-                    }
+
+                    var GetNota = "aplication/menu/api/datas/readData.php";
+                    $http({
+                            method: "get",
+                            url: GetNota
+                        })
+                        .then(function(response) {
+                            $scope.DataRekap = response.data.records[0];
+                            $scope.visi = $sce.trustAsHtml($scope.DataRekap.Visi_Misi);
+                            $scope.DataRekap.Visi_Misi = $scope.visi;
+                        }, function(error) {
+                            alert(error.message);
+                        })
                 }
 
 
             });
     </script>
+
 </body>
 
 </html>

@@ -15,6 +15,7 @@ class RiwayatJabatan{
     public $Gaji_Pokok;
     public $No_SK_Jabatan;
     public $Tgl_SK;
+    public $Jabatan;
  
     // constructor with $db as database connection
     public function __construct($db){
@@ -36,6 +37,34 @@ class RiwayatJabatan{
        return $stmt;
     }
 
+    function readByNipp(){
+        
+        // select all query
+        $query = "SELECT * from riwayat_jabatan, jabatan  where riwayat_jabatan.Jabatan_Id = Jabatan.Id and riwayat_jabatan.Nip=:Nip order by riwayat_jabatan.Id desc limit 1";
+     
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        $offset=1;
+        $limit=1;
+
+        $this->Nip=htmlspecialchars(strip_tags($this->Nip));
+        //$offset=htmlspecialchars(strip_tags($offset));
+        //$limi=htmlspecialchars(strip_tags($limit));
+       
+        $stmt->bindParam(":Nip", $this->Nip);
+        //$stmt->bindParam(2, $offset, PDO::PARAM_INT);
+        //$stmt->bindParam(3, $limit, PDO::PARAM_INT);
+     
+        // execute query
+        $stmt->execute();
+
+        $rowjabatan = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        $this->Jabatan = $rowjabatan['Jabatan'];
+     
+     }
+
+
     function readByNip(){
         
         // select all query
@@ -52,7 +81,7 @@ class RiwayatJabatan{
         $stmt->execute();
      
         return $stmt;
-     }
+    }
 
 
     function readOne(){
