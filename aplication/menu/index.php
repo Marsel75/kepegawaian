@@ -122,7 +122,7 @@
                     <ul class="list">
                         <li class="header">MAIN NAVIGATION</li>
                         <li class="active">
-                            <a href="?p=pangkat">
+                            <a href="?p=beranda">
                                 <i class="material-icons">home</i>
                                 <span>Home</span>
                             </a>
