@@ -172,7 +172,7 @@
                     </div>
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="Hasil" required/>
+                            <input type="text" class="form-control" name="Hasil"/>
                             <label class="form-label">Hasil</label>
                         </div>
                     </div>
