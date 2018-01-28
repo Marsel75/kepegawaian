@@ -5,6 +5,8 @@ if(isset($_GET['action'])==1)
     $q = mysql_query("SELECT * FROM pegawai where Nip = '$Nip'")or die(mysql_error());
     $dtpegawai = mysql_fetch_array($q);
     $nama = $dtpegawai['Nama'];
+    $fotolama = $dtpegawai[10];
+
 
 ?>
     <div class="row clearfix">
@@ -143,9 +145,11 @@ if(isset($_GET['action'])==1)
                                 </div>
                             </div>
                             <div class="form-group form-float">
+                                <label class="form-label">Foto</label>
                                 <div class="form-line">
+                                    <input type="hidden" class="form-control" name="fotolama"  value="<?php echo $dtpegawai[10];?>"/> 
                                     <input type="file" class="form-control" name="foto"  value="<?php echo $dtpegawai[10];?>"/>
-                                    <label class="form-label">Tgl_Masuk</label>
+                                    
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -171,6 +175,136 @@ if(isset($_GET['action'])==1)
         $Status = $_POST['Status'];
         $Photo = $_FILES['foto']['name'];
         
+        if($fotolama!=$Photo)
+        {
+            
+            if($fotolama==NULL || $fotolama=="")
+            {
+               
+
+                $dir       = 'img/'; //Folder penyimpanan file
+                $max_size  = 9000000; //Ukuran file maximal 4Mb
+                $nama_file = $_FILES['foto']['name']; //Nama file yang akan di Upload
+                $file_size = $_FILES['foto']['size']; //Ukuran file yang akan di Upload
+                $nama_tmp  = $_FILES['foto']['tmp_name']; //Nama file sementara
+                $upload = $dir . $nama_file; //Memposisikan direktori penyimpanan dan file
+                if($Photo!=NULL)
+                {
+                    if($file_size<=$max_size){
+                        if(move_uploaded_file($nama_tmp, $upload))
+                        {
+                            $q = mysql_query("UPDATE pegawai SET Sex= '$Sex', Tempat_Lahir= '$Tempat_lahir', Tgl_Lahir= '$Tgl_lahir', Agama= '$Agama', Status_Perkawinan= '$Martial', Tgl_Masuk= '$Tgl_Masuk', Jenis_Pegawai= '$JenisPegawai', Status= '$Status', Photo = '$Photo' where Nip= '$Nip'")or die(mysql_error());
+                            if($q)
+                            {
+                                echo "<script>alert('Data berhasil di simpan')</script>";
+                                echo "<script>document.location='?p=pegawai'</script>";
+                            }else{
+                                echo "<script>alert('Data Gagal di simpan')</script>";
+                            }
+                        }
+                    }
+                }else
+                {
+                            $q = mysql_query("UPDATE pegawai SET Sex= '$Sex', Tempat_Lahir= '$Tempat_lahir', Tgl_Lahir= '$Tgl_lahir', Agama= '$Agama', Status_Perkawinan= '$Martial', Tgl_Masuk= '$Tgl_Masuk', Jenis_Pegawai= '$JenisPegawai', Status= '$Status' where Nip= '$Nip'")or die(mysql_error());
+                            if($q)
+                            {
+                                echo "<script>alert('Data berhasil di simpan')</script>";
+                                echo "<script>document.location='?p=pegawai'</script>";
+                            }else{
+                                echo "<script>alert('Data Gagal di simpan')</script>";
+                            }
+                }
+                
+            }else
+            {
+                if(file_exists('img/'.$fotolama))
+                {
+                    unlink('img/'.$fotolama);
+                    $dir       = 'img/'; //Folder penyimpanan file
+                    $max_size  = 9000000; //Ukuran file maximal 4Mb
+                    $nama_file = $_FILES['foto']['name']; //Nama file yang akan di Upload
+                    $file_size = $_FILES['foto']['size']; //Ukuran file yang akan di Upload
+                    $nama_tmp  = $_FILES['foto']['tmp_name']; //Nama file sementara
+                    $upload = $dir . $nama_file; //Memposisikan direktori penyimpanan dan file
+                    if($Photo!=NULL)
+                    {
+                        if($file_size<=$max_size){
+                            if(move_uploaded_file($nama_tmp, $upload))
+                            {
+                                $q = mysql_query("UPDATE pegawai SET Sex= '$Sex', Tempat_Lahir= '$Tempat_lahir', Tgl_Lahir= '$Tgl_lahir', Agama= '$Agama', Status_Perkawinan= '$Martial', Tgl_Masuk= '$Tgl_Masuk', Jenis_Pegawai= '$JenisPegawai', Status= '$Status', Photo = '$Photo' where Nip= '$Nip'")or die(mysql_error());
+                                if($q)
+                                {
+                                    echo "<script>alert('Data berhasil di simpan')</script>";
+                                    echo "<script>document.location='?p=pegawai'</script>";
+                                }else{
+                                    echo "<script>alert('Data Gagal di simpan')</script>";
+                                }
+                            }
+                        }
+                    }else
+                    {
+                                $q = mysql_query("UPDATE pegawai SET Sex= '$Sex', Tempat_Lahir= '$Tempat_lahir', Tgl_Lahir= '$Tgl_lahir', Agama= '$Agama', Status_Perkawinan= '$Martial', Tgl_Masuk= '$Tgl_Masuk', Jenis_Pegawai= '$JenisPegawai', Status= '$Status' where Nip= '$Nip'")or die(mysql_error());
+                                if($q)
+                                {
+                                    echo "<script>alert('Data berhasil di simpan')</script>";
+                                    echo "<script>document.location='?p=pegawai'</script>";
+                                }else{
+                                    echo "<script>alert('Data Gagal di simpan')</script>";
+                                }
+                    }
+                }else
+                {
+                   
+                    $dir       = 'img/'; //Folder penyimpanan file
+                    $max_size  = 9000000; //Ukuran file maximal 4Mb
+                    $nama_file = $_FILES['foto']['name']; //Nama file yang akan di Upload
+                    $file_size = $_FILES['foto']['size']; //Ukuran file yang akan di Upload
+                    $nama_tmp  = $_FILES['foto']['tmp_name']; //Nama file sementara
+                    $upload = $dir . $nama_file; //Memposisikan direktori penyimpanan dan file
+                    if($Photo!=NULL)
+                    {
+                        if($file_size<=$max_size){
+                            if(move_uploaded_file($nama_tmp, $upload))
+                            {
+                                $q = mysql_query("UPDATE pegawai SET Sex= '$Sex', Tempat_Lahir= '$Tempat_lahir', Tgl_Lahir= '$Tgl_lahir', Agama= '$Agama', Status_Perkawinan= '$Martial', Tgl_Masuk= '$Tgl_Masuk', Jenis_Pegawai= '$JenisPegawai', Status= '$Status', Photo = '$Photo' where Nip= '$Nip'")or die(mysql_error());
+                                if($q)
+                                {
+                                    echo "<script>alert('Data berhasil di simpan')</script>";
+                                    echo "<script>document.location='?p=pegawai'</script>";
+                                }else{
+                                    echo "<script>alert('Data Gagal di simpan')</script>";
+                                }
+                            }
+                        }
+                    }else
+                    {
+                                $q = mysql_query("UPDATE pegawai SET Sex= '$Sex', Tempat_Lahir= '$Tempat_lahir', Tgl_Lahir= '$Tgl_lahir', Agama= '$Agama', Status_Perkawinan= '$Martial', Tgl_Masuk= '$Tgl_Masuk', Jenis_Pegawai= '$JenisPegawai', Status= '$Status' where Nip= '$Nip'")or die(mysql_error());
+                                if($q)
+                                {
+                                    echo "<script>alert('Data berhasil di simpan')</script>";
+                                    echo "<script>document.location='?p=pegawai'</script>";
+                                }else{
+                                    echo "<script>alert('Data Gagal di simpan')</script>";
+                                }
+                    }
+                    
+                }
+            }
+            
+            
+
+        }else
+        {
+            $q = mysql_query("UPDATE pegawai SET Sex= '$Sex', Tempat_Lahir= '$Tempat_lahir', Tgl_Lahir= '$Tgl_lahir', Agama= '$Agama', Status_Perkawinan= '$Martial', Tgl_Masuk= '$Tgl_Masuk', Jenis_Pegawai= '$JenisPegawai', Status= '$Status' where Nip= '$Nip'")or die(mysql_error());
+            if($q)
+            {
+                echo "<script>alert('Data berhasil di simpan')</script>";
+                echo "<script>document.location='?p=pegawai'</script>";
+            }else{
+                echo "<script>alert('Data Gagal di simpan')</script>";
+            }
+        }
+        
 
         
 
@@ -178,38 +312,7 @@ if(isset($_GET['action'])==1)
         //proses upload foto bandara/dermaga//
         //==================================//
         
-        $dir       = 'img/'; //Folder penyimpanan file
-        $max_size  = 9000000; //Ukuran file maximal 4Mb
-        $nama_file = $_FILES['foto']['name']; //Nama file yang akan di Upload
-        $file_size = $_FILES['foto']['size']; //Ukuran file yang akan di Upload
-        $nama_tmp  = $_FILES['foto']['tmp_name']; //Nama file sementara
-        $upload = $dir . $nama_file; //Memposisikan direktori penyimpanan dan file
-        if($Photo!=NULL)
-        {
-            if($file_size<=$max_size){
-                if(move_uploaded_file($nama_tmp, $upload))
-                {
-                    $q = mysql_query("UPDATE pegawai SET Sex= '$Sex', Tempat_Lahir= '$Tempat_lahir', Tgl_Lahir= '$Tgl_lahir', Agama= '$Agama', Status_Perkawinan= '$Martial', Tgl_Masuk= '$Tgl_Masuk', Jenis_Pegawai= '$JenisPegawai', Status= '$Status' where Nip= '$Nip', Photo = '$Photo'")or die(mysql_error());
-                    if($q)
-                    {
-                        echo "<script>alert('Data berhasil di simpan')</script>";
-                        echo "<script>document.location='?p=pegawai'</script>";
-                    }else{
-                        echo "<script>alert('Data Gagal di simpan')</script>";
-                    }
-                }
-            }
-        }else
-        {
-                    $q = mysql_query("UPDATE pegawai SET Sex= '$Sex', Tempat_Lahir= '$Tempat_lahir', Tgl_Lahir= '$Tgl_lahir', Agama= '$Agama', Status_Perkawinan= '$Martial', Tgl_Masuk= '$Tgl_Masuk', Jenis_Pegawai= '$JenisPegawai', Status= '$Status' where Nip= '$Nip'")or die(mysql_error());
-                    if($q)
-                    {
-                        echo "<script>alert('Data berhasil di simpan')</script>";
-                        echo "<script>document.location='?p=pegawai'</script>";
-                    }else{
-                        echo "<script>alert('Data Gagal di simpan')</script>";
-                    }
-        }
+        
         
         
     }
