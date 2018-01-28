@@ -73,56 +73,78 @@
 
                                                         <div class="form-group form-float">
                                                             <div class="form-line">
-                                                                <input type="text" class="form-control" name="Nama_Kegiatan" required/>
+                                                                <input type="text" class="form-control" name="Nama_Kegiatan" value="<?php echo $dtKegiatanKantor[1]?>" required/>
                                                                 <label class="form-label">Nama_Kegiatan</label>
                                                             </div>
                                                         </div>
                                                         <div class="form-group form-float">
                                                             <div class="form-line">
-                                                                <input type="date" class="form-control" name="Tgl_Mulai" required/>
+                                                                <input type="date" class="form-control" name="Tgl_Mulai" value="<?php echo $dtKegiatanKantor[2]?>" required/>
                                                                 <label class="form-label">Tgl_Mulai</label>
                                                             </div>
                                                         </div>
                                                         <div class="form-group form-float">
                                                             <div class="form-line">
-                                                                <input type="date" class="form-control" name="Tgl_Selesai" required/>
+                                                                <input type="date" class="form-control" name="Tgl_Selesai"  value="<?php echo $dtKegiatanKantor[3]?>"  required/>
                                                                 <label class="form-label">Tgl_Selesai</label>
                                                             </div>
                                                         </div>
                                                         <div class="form-group form-float">
                                                             <div class="form-line">
-                                                                <input type="text" class="form-control" name="Tempat" required/>
+                                                                <input type="text" class="form-control" name="Tempat"  value="<?php echo $dtKegiatanKantor[4]?>" required/>
                                                                 <label class="form-label">Tempat</label>
                                                             </div>
                                                         </div>
                                                         <div class="form-group form-float">
                                                             <div class="form-line">
-                                                                <input type="text" class="form-control" name="Hasil" required/>
+                                                                <input type="text" class="form-control" name="Hasil"  value="<?php echo $dtKegiatanKantor[5]?>"/>
                                                                 <label class="form-label">Hasil</label>
                                                             </div>
                                                         </div>
                                                         <div class="form-group form-float">
                                                             <div class="form-line">
-                                                                <input type="text" class="form-control" name="Peserta" required/>
+                                                                <input type="text" class="form-control" name="Peserta"  value="<?php echo $dtKegiatanKantor[6]?>" required/>
                                                                 <label class="form-label">Peserta</label>
                                                             </div>
                                                         </div>
                                                         <div class="form-group form-float">
                                                             <div class="form-line">
-                                                                <textarea class="form-control" name="Keterangan" ></textarea>
+                                                                <textarea class="form-control" name="Keterangan"  value="<?php echo $dtKegiatanKantor[7]?>" > <?php echo $dtKegiatanKantor[7]?></textarea>
                                                                 <label class="form-label">Keterangan</label>
                                                             </div>
                                                         </div>
                                                         
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <input type="submit" class="btn btn-link waves-effect" value="Simpan" name="add">
+                                                        <input type="submit" class="btn btn-link waves-effect" value="Simpan" name="update<?php echo $dtKegiatanKantor[0]?>">
                                                         <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
+                                    <?php
+                                        if(isset($_POST['update'.$dtKegiatanKantor[0]]))
+                                        {
+                                            $Nama_Kegiatan = $_POST['Nama_Kegiatan'];
+                                            $Tgl_Mulai = $_POST['Tgl_Mulai'];
+                                            $Tgl_Selesai = $_POST['Tgl_Selesai'];
+                                            $Tempat = $_POST['Tempat'];
+                                            $Hasil = $_POST['Hasil'];
+                                            $Peserta = $_POST['Peserta'];
+                                            $Keterangan = $_POST['Keterangan'];
+                                            //echo "<script>alert('$dtKegiatanKantor[0]')</script>";
+                                            
+                                            $q = mysql_query("UPDATE Kegiatan_Kantor SET Nama_Kegiatan='$Nama_Kegiatan', Tgl_Mulai='$Tgl_Mulai', Tgl_Selesai='$Tgl_Selesai',Tempat= '$Tempat',Hasil= '$Hasil',Peserta= '$Peserta', Keterangan= '$Keterangan' WHERE Id='$dtKegiatanKantor[0]'")or die(mysql_error());
+                                            if($q)
+                                            {
+                                                echo "<script>alert('Data berhasil di simpan')</script>";
+                                                echo "<script>document.location='?p=kegiatan_kantor'</script>";
+                                            }else{
+                                                echo "<script>alert('Data Gagal di simpan')</script>";
+                                            }
+                                        }
+                                    ?>
                                 </td>
                             </tr>
                             <?php

@@ -181,7 +181,7 @@
                                     <p>
                                         <a id="modal-853201" href="#modal-container-853201" role="button" ng-click="Selected(item)" class="btn btn-primary" data-toggle="modal">Detail</a>
                                         <div class="modal fade" id="modal-container-853201" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-sm">
+                                            <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
 
@@ -200,7 +200,7 @@
                                                             </dd>
                                                             <dt>Tanggal Kegiatan</dt>
                                                             <dd>
-                                                                {{DataSelected.Tgl_Mulai}}&nbsp; s/d &nsc;{{DataSelected.Tgl_Selesai}}
+                                                                {{DataSelected.Tgl_Mulai}}&nbsp; s/d &nbsp;{{DataSelected.Tgl_Selesai}}
                                                             </dd>
                                                             <dt>Lokasi</dt>
                                                             <dd>
@@ -214,7 +214,7 @@
                                                             <dd ng-show="DataSelected.Hasil!=null">
                                                                 {{DataSelected.Hasil}}
                                                             </dd>
-                                                            <dd ng-show="DataSelected.Status==null">
+                                                            <dd ng-show="DataSelected.Hasil==null || DataSelected.Hasil==''">
                                                                 Belum Terealisasi
                                                             </dd>
                                                             <dt>Keterangan</dt>
