@@ -70,12 +70,12 @@ if($num>0){
                 "Tempat"=>$Tempat,
                 "Hasil"=>$Hasil,
                 "Peserta"=>$Peserta,
-                "Keterangan"=>$Keterangan
+                "Keterangan"=>$Keterangan,
             );
             array_push($profile_item["Kegiatan"],$kegiatan_item);
         }
 
-        $stmtpegawai = $pegawai->read();
+        $stmtpegawai = $pegawai->readbyStatus();
         while ($rowpegawai = $stmtpegawai->fetch(PDO::FETCH_ASSOC)){
             // extract row
             // this will make $row['name'] to

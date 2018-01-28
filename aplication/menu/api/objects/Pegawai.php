@@ -37,6 +37,20 @@ class Pegawai{
        return $stmt;
     }
 
+    function readbyStatus(){
+    
+        // select all query
+        $query = "SELECT * from " . $this->table_name . " WHERE Status='True'";
+     
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+     
+        // execute query
+        $stmt->execute();
+     
+        return $stmt;
+     }
+
     function readKategori(){
         
         // select all query

@@ -50,7 +50,7 @@
                             </li>
                             <li><a href="#aboutUs" class="scroll-link">Tentang Kami</a></li>
                             <li><a href="#Portfolio" class="scroll-link">Kegiatan</a></li>
-                            <li><a href="#contact" class="scroll-link">Contact</a></li>
+                            <li><a href="aplication" class="scroll-link">Log in</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -66,7 +66,8 @@
                 <div class="hero_section">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="col-md-2">
+                            <div class="col-md-2 zoomIn wow animated" style="margin-top:100px;">
+                                <img src="aplication/images/LogoJayapura.png" width="130px" />
                             </div>
                             <div class="zoomIn wow animated col-md-10" style="margin-top:100px;">
                                 <center>
@@ -159,129 +160,89 @@
         <!-- Portfolio Filters -->
         <div class="portfolio">
 
-            <div id="filters" class="sixteen columns">
-                <ul class="clearfix">
-                    <li>
-                        <a id="all" href="#" data-filter="*" class="active">
-                            <h5>All</h5>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="#" data-filter=".design">
-                            <h5>Design</h5>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="#" data-filter=".android">
-                            <h5>Android</h5>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="#" data-filter=".appleIOS">
-                            <h5>Apple IOS</h5>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="#" data-filter=".web">
-                            <h5>Web App</h5>
-                        </a>
-                    </li>
-                </ul>
+            <div id="filters" class="col-md-3">
+                <input type="text" name="cari" class="form-control " ng-model="Cari" placeholder="Cari Kegiatan" />
             </div>
             <!--/Portfolio Filters -->
 
             <!-- Portfolio Wrapper -->
-            <div class="isotope fadeInLeft animated wow" style="position: relative; overflow: hidden; height: 480px;" id="portfolio_wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4" ng-repeat="item in DataRekap.Kegiatan | filter: Cari">
+                            <div class="thumbnail">
+                                <div class="caption">
+                                    <h3>
+                                        {{item.Nama_Kegiatan}}
+                                    </h3>
+                                    <p>
+                                        {{item.Keterangan}}
+                                    </p>
+                                    <p>
+                                        <a id="modal-853201" href="#modal-container-853201" role="button" ng-click="Selected(item)" class="btn btn-primary" data-toggle="modal">Detail</a>
+                                        <div class="modal fade" id="modal-container-853201" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
 
-                <!-- Portfolio Item -->
-                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   appleIOS isotope-item">
-                    <div class="portfolio_img"> <img src="img/portfolio_pic1.jpg" alt="Portfolio 1"> </div>
-                    <div class="item_overlay">
-                        <div class="item_info">
-                            <h4 class="project_name">SMS Mobile App</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                                ×
+                                                            </button>
+                                                        <h4 class="modal-title" id="myModalLabel">
+                                                            Detail Kegiatan
+                                                        </h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <dl>
+                                                            <dt>Nama Kegiatan</dt>
+                                                            <dd>
+                                                                {{DataSelected.Nama_Kegiatan}}
+                                                            </dd>
+                                                            <dt>Tanggal Kegiatan</dt>
+                                                            <dd>
+                                                                {{DataSelected.Tgl_Mulai}}&nbsp; s/d &nsc;{{DataSelected.Tgl_Selesai}}
+                                                            </dd>
+                                                            <dt>Lokasi</dt>
+                                                            <dd>
+                                                                {{DataSelected.Tempat}}
+                                                            </dd>
+                                                            <dt>Peserta</dt>
+                                                            <dd>
+                                                                {{DataSelected.Peserta}}
+                                                            </dd>
+                                                            <dt>Hasil</dt>
+                                                            <dd ng-show="DataSelected.Hasil!=null">
+                                                                {{DataSelected.Hasil}}
+                                                            </dd>
+                                                            <dd ng-show="DataSelected.Status==null">
+                                                                Belum Terealisasi
+                                                            </dd>
+                                                            <dt>Keterangan</dt>
+                                                            <dd>
+                                                                {{DataSelected.Keterangan}}
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="modal-footer">
+
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                                Close
+                                                            </button>
+                                                        <button type="button" class="btn btn-primary">
+                                                                Save changes
+                                                            </button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!--/Portfolio Item -->
-
-                <!-- Portfolio Item-->
-                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(337px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  design isotope-item">
-                    <div class="portfolio_img"> <img src="img/portfolio_pic2.jpg" alt="Portfolio 1"> </div>
-                    <div class="item_overlay">
-                        <div class="item_info">
-                            <h4 class="project_name">Finance App</h4>
-                        </div>
-                    </div>
-                </div>
-                <!--/Portfolio Item -->
-
-                <!-- Portfolio Item -->
-                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(674px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  design  isotope-item">
-                    <div class="portfolio_img"> <img src="img/portfolio_pic3.jpg" alt="Portfolio 1"> </div>
-                    <div class="item_overlay">
-                        <div class="item_info">
-                            <h4 class="project_name">GPS Concept</h4>
-                        </div>
-                    </div>
-                </div>
-                <!--/Portfolio Item-->
-
-                <!-- Portfolio Item-->
-                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(1011px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  android  prototype web isotope-item">
-                    <div class="portfolio_img"> <img src="img/portfolio_pic4.jpg" alt="Portfolio 1"> </div>
-                    <div class="item_overlay">
-                        <div class="item_info">
-                            <h4 class="project_name">Shopping</h4>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio Item -->
-
-                <!-- Portfolio Item -->
-                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  design isotope-item">
-                    <div class="portfolio_img"> <img src="img/portfolio_pic5.jpg" alt="Portfolio 1"> </div>
-                    <div class="item_overlay">
-                        <div class="item_info">
-                            <h4 class="project_name">Managment</h4>
-                        </div>
-                    </div>
-                </div>
-                <!--/Portfolio Item -->
-
-                <!-- Portfolio Item -->
-                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(337px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  web isotope-item">
-                    <div class="portfolio_img"> <img src="img/portfolio_pic6.jpg" alt="Portfolio 1"> </div>
-                    <div class="item_overlay">
-                        <div class="item_info">
-                            <h4 class="project_name">iPhone</h4>
-                        </div>
-                    </div>
-                </div>
-                <!--/Portfolio Item -->
-
-                <!-- Portfolio Item  -->
-                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(674px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  design web isotope-item">
-                    <div class="portfolio_img"> <img src="img/portfolio_pic7.jpg" alt="Portfolio 1"> </div>
-                    <div class="item_overlay">
-                        <div class="item_info">
-                            <h4 class="project_name">Nexus Phone</h4>
-                        </div>
-                    </div>
-                </div>
-                <!--/Portfolio Item -->
-
-                <!-- Portfolio Item -->
-                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(1011px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   android isotope-item">
-                    <div class="portfolio_img"> <img src="img/portfolio_pic8.jpg" alt="Portfolio 1"> </div>
-                    <div class="item_overlay">
-                        <div class="item_info">
-                            <h4 class="project_name">Android</h4>
-                        </div>
-                    </div>
-                    </a>
-                </div>
-                <!--/Portfolio Item -->
-
             </div>
             <!--/Portfolio Wrapper -->
 
@@ -331,126 +292,7 @@
                                         <p>
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.
                                         </p>
-                                        <div class="member-social-link">
-                                            <a href="#" class="twitter-btn"><i class="fa fa-twitter"></i></a>
-                                            <a href="#" class="facebook-btn"><i class="fa fa-facebook"></i></a>
-                                            <a href="#" class="dribbble-btn"><i class="fa fa-dribbble"></i></a>
-                                            <a href="#" class="linkedin-btn"><i class="fa fa-linkedin"></i></a>
-                                        </div>
-                                        <!-- /.member-social-link -->
-                                    </div>
-                                    <!-- /.member-details -->
-                                </div>
-                                <!-- /.inner-container -->
-                            </div>
-                            <!-- /.member-container -->
-                        </div>
-                        <!-- /.member -->
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="member wow bounceInUp animated">
-                            <div class="member-container" data-wow-delay=".3s">
-                                <div class="inner-container">
-                                    <div class="author-avatar">
-                                        <img class="img-circle" src="img/team_pic2.jpg" alt="Team Menber">
-                                    </div>
-                                    <!-- /.author-avatar -->
-                                    <div class="member-details">
-                                        <div class="member-top">
-                                            <h4 class="name">
-                                                Mark lores
-                                            </h4>
-                                            <span class="designation">
-													Web Developer
-												</span>
-                                        </div>
-                                        <!-- /.member-top -->
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.
-                                        </p>
-                                        <div class="member-social-link">
-                                            <a href="#" class="twitter-btn"><i class="fa fa-twitter"></i></a>
-                                            <a href="#" class="facebook-btn"><i class="fa fa-facebook"></i></a>
-                                            <a href="#" class="dribbble-btn"><i class="fa fa-dribbble"></i></a>
-                                            <a href="#" class="linkedin-btn"><i class="fa fa-linkedin"></i></a>
-                                        </div>
-                                        <!-- /.member-social-link -->
-                                    </div>
-                                    <!-- /.member-details -->
-                                </div>
-                                <!-- /.inner-container -->
-                            </div>
-                            <!-- /.member-container -->
-                        </div>
-                        <!-- /.member -->
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="member wow bounceInUp animated">
-                            <div class="member-container" data-wow-delay=".5s">
-                                <div class="inner-container">
-                                    <div class="author-avatar">
-                                        <img class="img-circle" src="img/team_pic3.jpg" alt="Team Menber">
-                                    </div>
-                                    <!-- /.author-avatar -->
-                                    <div class="member-details">
-                                        <div class="member-top">
-                                            <h4 class="name">
-                                                Thomas Lere
-                                            </h4>
-                                            <span class="designation">
-													UX Designer
-												</span>
-                                        </div>
-                                        <!-- /.member-top -->
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.
-                                        </p>
-                                        <div class="member-social-link">
-                                            <a href="#" class="twitter-btn"><i class="fa fa-twitter"></i></a>
-                                            <a href="#" class="facebook-btn"><i class="fa fa-facebook"></i></a>
-                                            <a href="#" class="dribbble-btn"><i class="fa fa-dribbble"></i></a>
-                                            <a href="#" class="linkedin-btn"><i class="fa fa-linkedin"></i></a>
-                                        </div>
-                                        <!-- /.member-social-link -->
-                                    </div>
-                                    <!-- /.member-details -->
-                                </div>
-                                <!-- /.inner-container -->
-                            </div>
-                            <!-- /.member-container -->
-                        </div>
-                        <!-- /.member -->
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="member wow bounceInUp animated">
-                            <div class="member-container" data-wow-delay=".7s">
-                                <div class="inner-container">
-                                    <div class="author-avatar">
-                                        <img class="img-circle" src="img/team_pic4.jpg" alt="Team Menber">
-                                    </div>
-                                    <!-- /.author-avatar -->
-                                    <div class="member-details">
-                                        <div class="member-top">
-                                            <h4 class="name">
-                                                Grintel Mark
-                                            </h4>
-                                            <span class="designation">
-													Web Designer
-												</span>
-                                        </div>
-                                        <!-- /.member-top -->
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.
-                                        </p>
-                                        <div class="member-social-link">
-                                            <a href="#" class="twitter-btn"><i class="fa fa-twitter"></i></a>
-                                            <a href="#" class="facebook-btn"><i class="fa fa-facebook"></i></a>
-                                            <a href="#" class="dribbble-btn"><i class="fa fa-dribbble"></i></a>
-                                            <a href="#" class="linkedin-btn"><i class="fa fa-linkedin"></i></a>
-                                        </div>
                                         <!-- /.member-social-link -->
                                     </div>
                                     <!-- /.member-details -->
@@ -542,6 +384,7 @@
         angular.module("Ctrl", [])
             .controller("LaporanController", function($scope, $http, $sce) {
                 $scope.DataRekap = [];
+                $scope.DataSelected = {};
                 $scope.Init = function() {
 
 
@@ -560,7 +403,10 @@
                         })
                 }
 
+                $scope.Selected = function(item) {
+                    $scope.DataSelected = item;
 
+                }
             });
     </script>
 

@@ -12,6 +12,7 @@ class KegiatanKantor{
     public $Hasil;
     public $Peserta;
     public $Keterangan;
+    public $Status;
  
     // constructor with $db as database connection
     public function __construct($db){
