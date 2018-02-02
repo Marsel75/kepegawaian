@@ -56,7 +56,7 @@
                         <tbody>
                             <?php
                             
-                                $cari = $_POST['cari'];
+                                
                                 //echo"<script>alert('$cari')</script>";
                                 $nopegawai = 1;
                                 $query="";
@@ -65,6 +65,7 @@
                                     $query="SELECT * FROM pegawai";
                                 }else
                                 {
+                                    $cari = $_POST['cari'];
                                     $query="select * from pegawai WHERE Nip Like '%$cari%' || Nama Like '%$cari%'";
                                 }
                                 $q = mysql_query($query)or die(mysql_error());
