@@ -55,12 +55,20 @@
                         </thead>
                         <tbody>
                             <?php
-                            if(isset($_POST['search']))
-                            {
+                            
                                 $cari = $_POST['cari'];
                                 //echo"<script>alert('$cari')</script>";
                                 $nopegawai = 1;
-                                $q = mysql_query("select * from pegawai WHERE Nip Like '%$cari%' || Nama Like '%$cari%'")or die(mysql_error());
+                                $query="";
+                                if(!isset($_POST['search']))
+                                {
+                                    $query="SELECT * FROM pegawai";
+                                }else
+                                {
+                                    $query="select * from pegawai WHERE Nip Like '%$cari%' || Nama Like '%$cari%'";
+                                }
+                                $q = mysql_query($query)or die(mysql_error());
+
                                 while($dtpegawai=mysql_fetch_array($q))
                                 {
                                     $datanip=$dtpegawai['Nip'];
@@ -427,7 +435,7 @@
                                 //include 'form/FormTambahEditJabatan.php';
 
                                 }
-                            }
+                            
                         ?>
 
                         </tbody>
